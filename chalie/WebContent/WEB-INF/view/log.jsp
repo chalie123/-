@@ -131,6 +131,7 @@ footer {
 				<br/>
 				<br/>
 				<br/>
+				<form action="newAccount">
 				<div align="center" style="font: bold 13pt/1.3 돋움">EMAIL &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="email" placeholder="메일주소">
 				</div>
 				<br/>
@@ -156,8 +157,8 @@ footer {
 				<br/>
 				
 				<br/>
-				
-				<button type="button" name="bt">회원가입</button>
+				</form>
+				<button type="submit" >회원가입</button>
 				
 				</div>
 				
