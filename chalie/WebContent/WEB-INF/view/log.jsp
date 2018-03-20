@@ -21,7 +21,7 @@
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
-	height: 1000px
+	height: 650px
 }
 
 /* Set gray background color and 100% height */
@@ -95,11 +95,15 @@ footer {
 							<li><a href="#">통합검색</a></li>
 							<li><a href="#">비도서검색 </a></li>
 							<li><a href="#">책 신 청 </a></li>
-						</ul></li>y
+						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/log"><span class="glyphicon glyphicon-log-in"></span>
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
 							Create</a></li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+							Login</a></li>
 				</ul>
 			</div>
 		</div>
@@ -118,32 +122,48 @@ footer {
 			
 			<div class="col-sm-8 text-left">
 			
-				<h1 align="center">이달의 어린이 도서</h1><br/>
 				<div align="center">
-				<a href="#">
-				<img src="/image/894481.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/x9788997984220.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/x9788958761761.jpg" width="300px" height="300px"/>
-				</a>
 				<br/>
 				<br/>
-		</div>
-				<h1 align="center">이달의 성인 도서</h1><br/>
-				<div align="center">
-				<a href="#">
-				<img src="/image/656021.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/00.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/07973881.jpg" width="300px" height="300px"/>
-				</a>
+				<br/>
+				<div>
+				<h2>회원가입</h2>
+				<br/>
+				<br/>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">EMAIL &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="email" placeholder="메일주소">
 				</div>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">PASS &nbsp;&nbsp;<input type="password" width="250px" height="250px;" name="pass" placeholder="비밀번호">
+				</div>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">NICK &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="nick" placeholder="닉네임">
+				</div>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">카드사 &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="card" placeholder="필수아님">
+				</div>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">CARD NUMBER&nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="number" placeholder="필수아님">
+				</div>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">주소 &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="card" placeholder="필수아님">
+				</div>
+				
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">흥미 &nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="interest" placeholder="흥미있는것적어주세요">
+				</div>
+				
+				<br/>
+				
+				<br/>
+				
+				<button type="button" name="bt">회원가입</button>
+				
+				</div>
+				
+				
+		</div>
+				
 			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well">
