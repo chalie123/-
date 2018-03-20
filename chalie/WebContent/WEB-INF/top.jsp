@@ -94,6 +94,7 @@ footer {
 						<ul class="dropdown-menu">
 							<li><a href="#">통합검색</a></li>
 							<li><a href="#">비도서검색 </a></li>
+							<li><a href="#">책 신 청 </a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -103,64 +104,3 @@ footer {
 			</div>
 		</div>
 	</nav>
-
-	<div class="container-fluid text-center">
-		<div class="row content">
-			<div class="col-sm-2 sidenav">
-				<h3 align="center">접속자 채팅창</h3>
-				<br />
-
-				<textarea rows="20" cols="22" class="placeholder">접속자 수</textarea>
-				<br /> <input type="text" />
-
-
-			</div>
-
-			<div class="col-sm-8 text-left">
-
-				<h1 align="center">이달의 어린이 도서</h1>
-				<br />
-				<div align="center">
-					<a href="#"> <img src="/image/894481.jpg" width="300px"
-						height="300px" />
-					</a> <a href="#"> <img src="/image/x9788997984220.jpg"
-						width="300px" height="300px" />
-					</a> <a href="#"> <img src="/image/x9788958761761.jpg"
-						width="300px" height="300px" />
-					</a> <br /> <br />
-				</div>
-				<h1 align="center"><a href="notice">공지사항</a></h1>
-				<br />
-				<div align="center">
-					<a href="#"> 
-						<input type="textfield" name="list" style="text-align:center; width:900px; height:300px; letter-spacing: -5px"/>
-					</a>
-				</div>
-			</div>
-			<div class="col-sm-2 sidenav">
-				<div class="well">
-					<p>추천도서1</p>
-				</div>
-				<div class="well">
-					<p>추천도서2</p>
-				</div>
-				<h3>도서 검색</h3>
-				<form action="/search">
-					<input type="text"><br />
-					<br />
-					<button type="submit" name="bt">확인</button>
-				</form>
-			</div>
-		</div>
-	</div>
-
-	<footer class="container-fluid text-center">
-		<p>KG ITBANK 찰리조 도서관 소개 개인정보취급 방침 채용 안내오시는길 환불규정안내 강남점 서울특별시 강남구
-			강남대로84길 16 제이스타워 11층~12층 사업자등록번호 : 000-00-00000 l 법인등록번호 :
-			0000000-0000000 통신판매번호 : 제 00-000-0호 0 상표권출원번호 : 000000000 고객지원센터
-			대표번호 : 00-0000-0000 0 FAX : 00-000-0000 Copyright ⓒ KG ITBANK 찰리조 도서관
-			All rights reserved.</p>
-	</footer>
-
-</body>
-</html>
