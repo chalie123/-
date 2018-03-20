@@ -7,6 +7,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into log
 		values(#{email},#{pass},#{name},sysdate,#{phone},#{address},#{interest},#{card},#{carddate},#{cardname})
 	</insert>
-
-
 </mapper>
