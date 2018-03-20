@@ -98,11 +98,11 @@ footer {
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+					<li><a href="/create"><span class="glyphicon glyphicon-log-in"></span>
 							Create</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>
+					<li><a href="/logon"><span class="glyphicon glyphicon-log-in"></span>
 							Login</a></li>
 				</ul>
 			</div>
@@ -131,7 +131,7 @@ footer {
 				<br/>
 				<br/>
 				<br/>
-				<form action="/newAccount">
+				<form action="/create2">
 				<div align="center" style="font: bold 13pt/1.3 돋움">EMAIL &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="email" placeholder="메일주소">
 				</div>
 				<br/>
@@ -139,6 +139,9 @@ footer {
 				</div>
 				<br/>
 				<div align="center" style="font: bold 13pt/1.3 돋움">NICK &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="name" placeholder="닉네임">
+				</div>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">휴대폰번호&nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="phone" placeholder="번호">
 				</div>
 				<br/>
 				<div align="center" style="font: bold 13pt/1.3 돋움">카드번호 &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="card" placeholder="필수아님">
@@ -154,9 +157,6 @@ footer {
 				</div>
 				<br/>
 				<div align="center" style="font: bold 13pt/1.3 돋움">cvc &nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="cvc" placeholder="cvc">
-				</div>
-				<br/>
-				<div align="center" style="font: bold 13pt/1.3 돋움">휴대폰번호&nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="phone" placeholder="번호">
 				</div>
 				<br/>
 				<div align="center" style="font: bold 13pt/1.3 돋움">흥미 &nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="interest" placeholder="흥미있는것적어주세요">

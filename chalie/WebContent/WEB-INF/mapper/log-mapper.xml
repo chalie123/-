@@ -5,6 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="log">
 	<insert id="addAccount">
 		insert into log
-		values(#{email},#{pass},#{name},sysdate,#{phone},#{address},#{interest},#{card},#{carddate},#{cardname},#{cvc})
+		values(#{email},#{pass},#{name},sysdate,#{phone},#{address},#{interest},#{card},#{carddate},#{cardname},#{cvc},0)
 	</insert>
+	<select id = "logon" resultType="hashmap">
+		select * from log where email=#{email} and pass=#{pass}
+	</select>
 </mapper>

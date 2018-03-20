@@ -21,7 +21,7 @@
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
 .row.content {
-	height: 1000px
+	height: 650px
 }
 
 /* Set gray background color and 100% height */
@@ -100,7 +100,11 @@ footer {
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/create"><span class="glyphicon glyphicon-log-in"></span>
 							Create</a></li>
-				</ul>/create
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="/logon"><span class="glyphicon glyphicon-log-in"></span>
+							Login</a></li>
+				</ul>
 			</div>
 		</div>
 	</nav>
@@ -115,35 +119,32 @@ footer {
 				 
 			
 			</div>
-			
 			<div class="col-sm-8 text-left">
 			
-				<h1 align="center">이달의 어린이 도서</h1><br/>
 				<div align="center">
-				<a href="#">
-				<img src="/image/894481.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/x9788997984220.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/x9788958761761.jpg" width="300px" height="300px"/>
-				</a>
 				<br/>
 				<br/>
-		</div>
-				<h1 align="center">이달의 성인 도서</h1><br/>
-				<div align="center">
-				<a href="#">
-				<img src="/image/656021.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/00.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/07973881.jpg" width="300px" height="300px"/>
-				</a>
+				<br/>
+				<div>
+				<h2>로그인</h2>
+				<br/>
+				<br/>
+				<br/>
+				<form action="/logon2">
+				<div align="center" style="font: bold 13pt/1.3 돋움">EMAIL &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="email" placeholder="메일주소">
 				</div>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">PASS &nbsp;&nbsp;<input type="password" width="250px" height="250px;" name="pass" placeholder="비밀번호">
+				</div>
+				<br/>
+			
+				<button type="submit" >확인</button>
+				
+				
+				</form>
+				</div>
+		</div>
+				
 			</div>
 			<div class="col-sm-2 sidenav">
 				<div class="well">
@@ -160,6 +161,7 @@ footer {
 			</div>
 		</div>
 	</div>
+
 	<footer class="container-fluid text-center">
 		<p>KG ITBANK 찰리조 도서관 소개 개인정보취급 방침 채용 안내오시는길 환불규정안내 강남점 서울특별시 강남구 강남대로84길 16 제이스타워 11층~12층 사업자등록번호 :
 			000-00-00000 l 법인등록번호 : 0000000-0000000 통신판매번호 : 제 00-000-0호 0
