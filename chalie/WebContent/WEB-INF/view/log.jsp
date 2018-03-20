@@ -131,25 +131,33 @@ footer {
 				<br/>
 				<br/>
 				<br/>
-				<form action="newAccount">
+				<form action="/newAccount">
 				<div align="center" style="font: bold 13pt/1.3 돋움">EMAIL &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="email" placeholder="메일주소">
 				</div>
 				<br/>
 				<div align="center" style="font: bold 13pt/1.3 돋움">PASS &nbsp;&nbsp;<input type="password" width="250px" height="250px;" name="pass" placeholder="비밀번호">
 				</div>
 				<br/>
-				<div align="center" style="font: bold 13pt/1.3 돋움">NICK &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="nick" placeholder="닉네임">
+				<div align="center" style="font: bold 13pt/1.3 돋움">NICK &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="name" placeholder="닉네임">
 				</div>
 				<br/>
-				<div align="center" style="font: bold 13pt/1.3 돋움">카드사 &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="card" placeholder="필수아님">
+				<div align="center" style="font: bold 13pt/1.3 돋움">카드번호 &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="card" placeholder="필수아님">
 				</div>
 				<br/>
-				<div align="center" style="font: bold 13pt/1.3 돋움">CARD NUMBER&nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="number" placeholder="필수아님">
+				<div align="center" style="font: bold 13pt/1.3 돋움">카드사 &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="cardname" placeholder="필수아님">
 				</div>
 				<br/>
-				<div align="center" style="font: bold 13pt/1.3 돋움">주소 &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="card" placeholder="필수아님">
+				<div align="center" style="font: bold 13pt/1.3 돋움">주소 &nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="address" placeholder="주소">
 				</div>
-				
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">카드유효기간 &nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="carddate" placeholder="카드 유효기간">
+				</div>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">cvc &nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="cvc" placeholder="cvc">
+				</div>
+				<br/>
+				<div align="center" style="font: bold 13pt/1.3 돋움">휴대폰번호&nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="phone" placeholder="번호">
+				</div>
 				<br/>
 				<div align="center" style="font: bold 13pt/1.3 돋움">흥미 &nbsp;&nbsp;<input type="text" width="500px" height="500px;" name="interest" placeholder="흥미있는것적어주세요">
 				</div>
@@ -157,8 +165,9 @@ footer {
 				<br/>
 				
 				<br/>
+				<button type="submit" >확인</button>
 				</form>
-				<button type="submit" >회원가입</button>
+				
 				
 				</div>
 				
