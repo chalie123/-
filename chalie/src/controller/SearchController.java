@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +21,14 @@ public class SearchController {
 	SearchService searchService;
 	
 	@RequestMapping("")
-	public String SearchHandle(@RequestParam("arg") String arg) {
+	public String SearchHandle(HttpSession session, @RequestParam("arg") String arg) {
 		List<Map> list=new ArrayList<Map>(searchService.search(arg));
-		return "";
+//		for(Map l : list) {
+//			System.out.println(l.toString());
+//		}
+//		list.clear();
+		session.setAttribute("searchResult", list);
+		
+		return "search";
 	}
 }

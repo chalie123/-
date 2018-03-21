@@ -15,8 +15,8 @@
 
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
-	<context:component-scan base-package="mvc.service" />
-	<context:component-scan base-package="mvc.controller" />
+	<context:component-scan base-package="Service" />
+	<context:component-scan base-package="controller" />
 	<!-- mybatis setting -->
 	<bean id="ds"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -25,6 +25,14 @@
 		<property name="username" value="hr" />
 		<property name="password" value="hr" />
 	</bean>
+   <!-- view setting  -->
+   <bean
+      class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      <property name="prefix" value="/WEB-INF/view/" />
+      <property name="suffix" value=".jsp" />
+   </bean>
+	
+	
 	<bean class="org.mybatis.spring.SqlSessionFactoryBean" id="factory">
 		<property name="dataSource" ref="ds" />
 		<property name="mapperLocations">

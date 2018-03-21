@@ -100,7 +100,7 @@ footer {
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/create"><span class="glyphicon glyphicon-log-in"></span>
 							Create</a></li>
-				</ul>/create
+				</ul>
 			</div>
 		</div>
 	</nav>
@@ -154,8 +154,8 @@ footer {
 				</div>
 				<h3>도서 검색</h3>
 				<form action="/search">
-					<input type="text"><br/><br/>
-					<button type="submit" name="bt">확인</button>
+					<input type="text" name="arg"><br/><br/>
+					<button type="submit">확인</button>
 				</form>
 			</div>
 		</div>
