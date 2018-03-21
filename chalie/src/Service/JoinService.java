@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LogonService {
+public class JoinService {
 	@Autowired
 	SqlSessionTemplate template;
-	public boolean logonService(Map<String,String> param){
-		return template.insert("log.addAccount", param)==1;
+	public boolean joinService(Map<String,String> param){
+		return template.insert("lib_account.addAccount", param)==1;
 	}
 }

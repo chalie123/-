@@ -7,15 +7,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import Service.LogonService;
+import Service.JoinService;
 
 @Controller
-public class LogonController {
+public class JoinController {
 	@Autowired 
-	LogonService logonService;
+	JoinService joinService;
 	@RequestMapping("/newAccount")
 	public String logonController(@RequestParam Map<String,String> param){
-		boolean rst =logonService.logonService(param);
+		boolean rst =joinService.joinService(param);
 		
 		return "index";
 	}

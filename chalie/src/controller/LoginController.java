@@ -4,13 +4,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class LogController {
+public class LoginController {
 	
 	
-	@RequestMapping("/log")
-	public String LogHandle() {
+	@RequestMapping("/login")
+	public String LoginHandle() {
 		
-		return"log";
+		return"login";
 	}
 	
 	
