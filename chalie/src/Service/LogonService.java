@@ -1,6 +1,8 @@
 package Service;
 
-import java.util.HashMap;
+import java.io.UnsupportedEncodingException;
+import java.security.GeneralSecurityException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.Map;
 
@@ -15,9 +17,8 @@ public class LogonService {
 	SqlSessionTemplate template;
 	
 	public boolean logonService(Map<String,String> param) {
-		System.out.println(param.toString());
-		List map= template.selectList("lib_account.logon", param);
-		System.out.println(map.toString());
-		return map.size()==1;
+		List<Map> list= template.selectList("lib_account.logon", param);
+		System.out.println(list.toString());
+		return list.size()==1;
 	}
 }
