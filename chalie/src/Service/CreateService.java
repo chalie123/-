@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 public class CreateService {
 	@Autowired
 	SqlSessionTemplate template;
-	public boolean logonService(Map<String,String> param){
-		return template.insert("log.addAccount", param)==1;
+	public boolean createService(Map<String,String> param){
+		return template.insert("lib_account.create", param)==1;
 	}
 }

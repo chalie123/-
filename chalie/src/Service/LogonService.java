@@ -14,9 +14,9 @@ public class LogonService {
 	@Autowired
 	SqlSessionTemplate template;
 	
-	public boolean createservice(Map<String,String> param) {
+	public boolean logonService(Map<String,String> param) {
 		System.out.println(param.toString());
-		List map= template.selectList("log.logon", param);
+		List map= template.selectList("lib_account.logon", param);
 		System.out.println(map.toString());
 		return map.size()==1;
 	}

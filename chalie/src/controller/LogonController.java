@@ -17,14 +17,14 @@ public class LogonController {
 
 	@RequestMapping("/logon")
 	public String LogHandle(@RequestParam Map<String, String> param) {
-		// Map map =logonService.createservice(param);
+		// Map map =logonService.logonService(param);
 		// System.out.println(map.size()==1);
 		return "logon";
 	}
 
 	@RequestMapping("/logon2")
 	public String Log2Handle(@RequestParam Map<String, String> param) {
-		boolean rst = logonService.createservice(param);
+		boolean rst = logonService.logonService(param);
 		if (rst) {
 			return "/index";
 		} else {
