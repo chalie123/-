@@ -5,6 +5,9 @@ import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,15 +34,18 @@ public class LogonController {
 	}
 
 	@RequestMapping("/logon2")
-	public String Log2Handle(@RequestParam Map<String, String> param)
+	public String Log2Handle(HttpServletRequest application, HttpSession session,
+			@RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
-//		String key=(String) session.getAttribute("key");
-		String key="1234567890123456";
-		AES256=new AES256Service(key);
-		param.put("email", AES256.encrypt(param.get("email")));
+		// String key=(String) application.getAttribute("key");
+		// 암호화 키는 16자리 숫자 영문 String
+		String key = "1234567890123456";
+		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
-		boolean rst = logonService.logonService(param);
-		if (rst) {
+		String rst = logonService.logonService(param);
+		if (rst.length()!=0) {
+			application.setAttribute("logons", rst);
+			session.setAttribute("logon", rst);
 			return "/index";
 		} else {
 			return "/create";

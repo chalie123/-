@@ -2,6 +2,9 @@ package Service;
 
 import java.security.MessageDigest;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class SHA256Service {
 
 	public String encrypt(String text) {

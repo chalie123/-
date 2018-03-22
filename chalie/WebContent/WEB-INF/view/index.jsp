@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en">
 <head>
 <title>찰리 도서관</title>
@@ -101,6 +102,20 @@ footer {
 					<li><a href="/create"><span class="glyphicon glyphicon-log-in"></span>
 							Create</a></li>
 				</ul>
+				<c:choose>
+					<c:when test="${logon==null }">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/logon"><span class="glyphicon glyphicon-log-in"></span>
+									Login</a></li>
+						</ul>
+					</c:when>
+					<c:otherwise>
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/accountManagement"><span class="glyphicon glyphicon-log-in"></span>
+								${logon }</a></li>
+						</ul>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 	</nav>

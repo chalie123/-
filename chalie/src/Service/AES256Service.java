@@ -10,13 +10,14 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import org.apache.commons.codec.binary.Base64;
+import org.springframework.stereotype.Service;
 
+@Service
 public class AES256Service {
-	private String iv;
-	private Key keySpec;
 
-	public AES256Service(String key) throws UnsupportedEncodingException {
-		this.iv = key.substring(0, 16);
+	public String encrypt(String str,String key)
+			throws NoSuchAlgorithmException, GeneralSecurityException, UnsupportedEncodingException {
+		String iv = key.substring(0, 16);
 		byte[] keyBytes = new byte[16];
 		byte[] b = key.getBytes("UTF-8");
 		int len = b.length;
@@ -25,12 +26,6 @@ public class AES256Service {
 		}
 		System.arraycopy(b, 0, keyBytes, 0, len);
 		SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
-
-		this.keySpec = keySpec;
-	}
-
-	public String encrypt(String str)
-			throws NoSuchAlgorithmException, GeneralSecurityException, UnsupportedEncodingException {
 		Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
 		c.init(Cipher.ENCRYPT_MODE, keySpec, new IvParameterSpec(iv.getBytes()));
 		byte[] encrypted = c.doFinal(str.getBytes("UTF-8"));
@@ -38,8 +33,17 @@ public class AES256Service {
 		return enStr;
 	}
 
-	public String decrypt(String str)
+	public String decrypt(String str, String key)
 			throws NoSuchAlgorithmException, GeneralSecurityException, UnsupportedEncodingException {
+		String iv = key.substring(0, 16);
+		byte[] keyBytes = new byte[16];
+		byte[] b = key.getBytes("UTF-8");
+		int len = b.length;
+		if (len > keyBytes.length) {
+			len = keyBytes.length;
+		}
+		System.arraycopy(b, 0, keyBytes, 0, len);
+		SecretKeySpec keySpec = new SecretKeySpec(keyBytes, "AES");
 		Cipher c = Cipher.getInstance("AES/CBC/PKCS5Padding");
 		c.init(Cipher.DECRYPT_MODE, keySpec, new IvParameterSpec(iv.getBytes()));
 		byte[] byteStr = Base64.decodeBase64(str.getBytes());
