@@ -2,8 +2,8 @@ import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 
-import security.AES256Service;
-import security.SHA256Service;
+import Service.AES256Service;
+import Service.SHA256Service;
 
 public class test {
 	public static void main(String[] args) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {

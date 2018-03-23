@@ -17,18 +17,18 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import Service.AES256Service;
 import Service.AccountService;
-import security.AES256Service;
-import security.SHA256Service;
+import Service.SHA256Service;
 
 @Controller
 @RequestMapping("/account")
 public class AccountController {
 
-//	@Autowired
-//	SHA256Service SHA256;
-//	@Autowired
-//	AES256Service AES256;
+	@Autowired
+	SHA256Service SHA256;
+	@Autowired
+	AES256Service AES256;
 	@Autowired
 	AccountService AccountService;
 
@@ -57,8 +57,6 @@ public class AccountController {
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) application.getAttribute("key");
 		// 암호화 키는 16자리 숫자 영문 String
-		AES256Service AES256=new AES256Service();
-		SHA256Service SHA256=new SHA256Service();
 		String key = "1234567890123456";
 		param.put("serial", UUID.randomUUID().toString());
 		param.put("email", AES256.encrypt(param.get("email"), key));
@@ -85,8 +83,6 @@ public class AccountController {
 	public String modifyHandle(HttpSession session, @RequestParam Map<String,String>param) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) application.getAttribute("key");
 		// 암호화 키는 16자리 숫자 영문 String
-		AES256Service AES256=new AES256Service();
-		SHA256Service SHA256=new SHA256Service();
 		String key = "1234567890123456";
 		param.put("pass", SHA256.encrypt(param.get("pass")));
 		if(param.get("phone")!=null)
@@ -114,8 +110,6 @@ public class AccountController {
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) application.getAttribute("key");
 		// 암호화 키는 16자리 숫자 영문 String
-		AES256Service AES256=new AES256Service();
-		SHA256Service SHA256=new SHA256Service();
 		String key = "1234567890123456";
 		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
