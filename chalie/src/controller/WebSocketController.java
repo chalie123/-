@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 
 @Controller
 @RequestMapping("/WebSocket")
-public class WSController extends TextWebSocketHandler{
+public class WebSocketController extends TextWebSocketHandler{
 
 	Map<WebSocketSession, String> wsSessions;
 	

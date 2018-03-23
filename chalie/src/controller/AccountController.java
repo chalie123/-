@@ -1,5 +1,7 @@
 package controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
@@ -10,12 +12,15 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import com.google.gson.Gson;
 
 import Service.AES256Service;
 import Service.AccountService;
@@ -52,8 +57,25 @@ public class AccountController {
 		return "/deleteView";
 	}
 	
+	@RequestMapping("/overlapCheck")
+	public void OverlapCheckHandle(HttpServletResponse resp, @RequestParam Map<String, String> param) {
+		boolean rst=AccountService.overlapCheck(param);
+		Map<String, Object> map=new HashMap<>();
+		resp.setContentType("text/html;charset=UTF-8");
+		try {
+			PrintWriter out=resp.getWriter();
+			if(rst) {
+				out.println(new Gson().toJson(new HashMap().put("overlapCheck", true)));
+			}else {
+				out.println(new Gson().toJson(new HashMap().put("overlapCheck", false)));
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@RequestMapping("/create")
-	public String createHandle(HttpServletRequest application, @RequestParam Map<String, String> param)
+	public String createHandle(HttpServletRequest application, HttpSession session, @RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) application.getAttribute("key");
 		// 암호화 키는 16자리 숫자 영문 String
@@ -72,6 +94,16 @@ public class AccountController {
 		if (param.get("cvc") != null)
 			param.put("cvc", AES256.encrypt(param.get("cvc"), key));
 		String rst = AccountService.create(param);
+		if(application.getAttribute("logons")==null) {
+			List<String> logons=new ArrayList<>();
+			application.setAttribute("logons", logons.add(rst));
+		}else {
+			List<String> logons=new ArrayList<>();
+			logons=(List<String>) application.getAttribute("logons");
+			logons.add(rst);
+			application.setAttribute("logons", logons);
+		}
+		session.setAttribute("logon", rst);
 		if (rst.length() != 0) {
 			return "/index";
 		} else {
@@ -115,7 +147,7 @@ public class AccountController {
 		param.put("pass", SHA256.encrypt(param.get("pass")));
 		String rst = AccountService.login(param);
 		if (rst.length() != 0) {
-			if(application.getAttribute("logons")!=null) {
+			if(application.getAttribute("logons")==null) {
 				List<String> logons=new ArrayList<>();
 				application.setAttribute("logons", logons.add(rst));
 			}else {

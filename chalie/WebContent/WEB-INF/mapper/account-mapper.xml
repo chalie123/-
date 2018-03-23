@@ -27,6 +27,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where name=#{name}
 	</update>
 	<update id="delete">
-		update lib_account where set email=0, pass=0, name=#{rename}, phone=0, address=0, interest=0, card=0, carddate=0, cardname=0, cvc=0
+		update lib_account where name=#{name} set email=0, pass=0, name=#{rename}, phone=0, address=0, interest=0, card=0, carddate=0, cardname=0, cvc=0
 	</update>
+	<select id="overlapCheck">
+		select * from lib_account
+		<where>
+			<if test="name != null">
+				name=#{name}
+			</if>
+			<if test="email != null">
+				email=#{email}
+			</if>
+		</where>
+	</select>
 </mapper>

@@ -15,6 +15,16 @@ public class AccountService {
 	@Autowired
 	SqlSessionTemplate template;
 
+	public boolean overlapCheck(Map<String, String> param) {
+		Map map=template.selectOne("lib_account.overlapCheck", param);
+		map.size();
+		if(map.size()!=0) {
+			return false; 
+		}else {
+			return true;
+		}
+	}
+	
 	public String create(Map<String, String> param) {
 		int rst = template.insert("lib_account.create", param);
 		if (rst != 1) {
@@ -29,7 +39,7 @@ public class AccountService {
 	public String login(Map<String, String> param) {
 		List<Map> list = template.selectList("lib_account.login", param);
 		if (list.size() == 1) {
-			System.out.println("[SYSTEM]<Account> : " + list.get(0).get("NAME") + "Logged In.");
+			System.out.println("[SYSTEM]<Account> : " + list.get(0).get("NAME") + " Logged In.");
 			return (String) list.get(0).get("NAME");
 		} else {
 			System.out.println("[SYSTEM]<Account> : Login attempt with name = " + param.get("name") + " failed.");
@@ -45,7 +55,8 @@ public class AccountService {
 	}
 	
 	public void delete(Map<String, String> param) {
-		String rename=UUID.randomUUID().toString().substring(0, 7);
+		String rename=UUID.randomUUID().toString().substring(0, 8);
+		rename="DA"+rename;
 		param.put("rename", rename);
 		template.delete("lib_account.delete", param);
 		System.out.println("[SYSTEM]<Account> : "+param.get("name")+" deleted account. name changed to "+rename+".");
