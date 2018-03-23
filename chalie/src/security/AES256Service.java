@@ -1,4 +1,4 @@
-package Service;
+package security;
 
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
@@ -17,7 +17,8 @@ public class AES256Service {
 
 	public String encrypt(String str,String key)
 			throws NoSuchAlgorithmException, GeneralSecurityException, UnsupportedEncodingException {
-		String iv = key.substring(0, 16);
+//		String iv = key.substring(0, 16);
+		String iv="1234567890123456";
 		byte[] keyBytes = new byte[16];
 		byte[] b = key.getBytes("UTF-8");
 		int len = b.length;

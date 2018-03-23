@@ -131,7 +131,7 @@ footer {
 				<br/>
 				<br/>
 				<br/>
-				<form action="/create2">
+				<form action="/account/create">
 				<div align="center" style="font: bold 13pt/1.3 돋움">EMAIL &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="email" placeholder="메일주소">
 				</div>
 				<br/>

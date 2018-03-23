@@ -17,26 +17,48 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import Service.AES256Service;
 import Service.AccountService;
-import Service.SHA256Service;
+import security.AES256Service;
+import security.SHA256Service;
 
 @Controller
 @RequestMapping("/account")
 public class AccountController {
 
-	@Autowired
-	SHA256Service SHA256;
-	@Autowired
-	AES256Service AES256;
+//	@Autowired
+//	SHA256Service SHA256;
+//	@Autowired
+//	AES256Service AES256;
 	@Autowired
 	AccountService AccountService;
 
+	@RequestMapping("/createView")
+	public String createView() {
+		return "/createView";
+	}
+	
+	@RequestMapping("/loginView")
+	public String loginView() {
+		return "/loginView";
+	}
+	
+	@RequestMapping("/modifyView")
+	public String modifyView() {
+		return "/modifyView";
+	}
+	
+	@RequestMapping("/deleteView")
+	public String deleteView() {
+		return "/deleteView";
+	}
+	
 	@RequestMapping("/create")
 	public String createHandle(HttpServletRequest application, @RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) application.getAttribute("key");
 		// 암호화 키는 16자리 숫자 영문 String
+		AES256Service AES256=new AES256Service();
+		SHA256Service SHA256=new SHA256Service();
 		String key = "1234567890123456";
 		param.put("serial", UUID.randomUUID().toString());
 		param.put("email", AES256.encrypt(param.get("email"), key));
@@ -53,9 +75,9 @@ public class AccountController {
 			param.put("cvc", AES256.encrypt(param.get("cvc"), key));
 		String rst = AccountService.create(param);
 		if (rst.length() != 0) {
-			return "/logon";
+			return "/index";
 		} else {
-			return "/create";
+			return "/index";
 		}
 	}
 
@@ -63,6 +85,8 @@ public class AccountController {
 	public String modifyHandle(HttpSession session, @RequestParam Map<String,String>param) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) application.getAttribute("key");
 		// 암호화 키는 16자리 숫자 영문 String
+		AES256Service AES256=new AES256Service();
+		SHA256Service SHA256=new SHA256Service();
 		String key = "1234567890123456";
 		param.put("pass", SHA256.encrypt(param.get("pass")));
 		if(param.get("phone")!=null)
@@ -77,19 +101,21 @@ public class AccountController {
 		}
 		String rst=AccountService.modify(session, param);
 		if(rst.length()!=0) {
-			return "";
+			return "/index";
 		}else {
-			return "";
+			return "/index";
 		}
 	}
 
 	@SuppressWarnings("unchecked")
-	@RequestMapping("login")
+	@RequestMapping("/login")
 	public String loginHandle(HttpServletRequest application, HttpSession session,
 			@RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) application.getAttribute("key");
 		// 암호화 키는 16자리 숫자 영문 String
+		AES256Service AES256=new AES256Service();
+		SHA256Service SHA256=new SHA256Service();
 		String key = "1234567890123456";
 		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
@@ -107,28 +133,28 @@ public class AccountController {
 			session.setAttribute("logon", rst);
 			return "/index";
 		} else {
-			return "/create";
+			return "/index";
 
 		}
 	}
 	
 	@SuppressWarnings("unchecked")
-	@RequestMapping("logout")
+	@RequestMapping("/logout")
 	public String logoutHandle(HttpServletRequest application,HttpSession session) {
 		List<String> logons=new ArrayList<>();
 		logons=(List<String>) application.getAttribute("logons");
 		logons.remove(session.getAttribute("logon"));
 		application.setAttribute("logons", logons);
 		session.removeAttribute("logon");
-		return "index";
+		return "/index";
 	}
 	
-	@RequestMapping("delete")
+	@RequestMapping("/delete")
 	public String deleteHandle(HttpSession session) {
 		Map name=new HashMap();
 		name.put("name", session.getAttribute("logon"));
 		AccountService.delete(name);
 		
-		return "";
+		return "/index";
 	}
 }
