@@ -5,9 +5,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="lib_account">
 	<insert id="create">
 		insert into lib_account
-		values(#{email},#{pass},#{name},sysdate,#{phone},#{address},#{interest},#{card},#{carddate},#{cardname},#{cvc},0)
+		values(#{email},#{pass},#{name},sysdate,#{phone},#{address},#{interest},#{card},#{carddate},#{cardname},#{cvc},#{serial},0)
 	</insert>
-	<select id = "logon" resultType="hashmap">
+	<select id = "login" resultType="hashmap">
 		select * from lib_account where email=#{email} and pass=#{pass}
 	</select>
+	<update id="modify">
+		update lib_account set pass=#{pass}
+		<if test="phone != null">
+			, phone=#{phone}
+		</if>
+		<if test="address != null">
+			, address=#{address}
+		</if>
+		<if test="interest != null">
+			, interest=#{interest}
+		</if>
+		<if test="card != null">
+			, card=#{card}, carddate=#{carddate}, cardname=#{cardname}, cvc=#{cvc}
+		</if>
+		where name=#{name}
+	</update>
+	<update id="delete">
+		update lib_account where set email=0, pass=0, name=#{rename}, phone=0, address=0, interest=0, card=0, carddate=0, cardname=0, cvc=0
+	</update>
 </mapper>

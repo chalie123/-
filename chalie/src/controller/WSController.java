@@ -1,12 +1,10 @@
 package controller;
 
 import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,43 +19,38 @@ import com.google.gson.Gson;
 @RequestMapping("/WebSocket")
 public class WSController extends TextWebSocketHandler{
 
-	Set<WebSocketSession> wsSessions;
-	Map<WebSocketSession, String> wsSessionMap;
+	Map<WebSocketSession, String> wsSessions;
 	
 	@PostConstruct
 	public void init() {
-		wsSessions=new LinkedHashSet<>();
-		wsSessionMap=new LinkedHashMap<>();
-	}
+		wsSessions=new HashMap<>();
+	} 
 	
-	@Override
-	public void afterConnectionEstablished(WebSocketSession wsSession) throws Exception {
-		String ip=wsSession.getRemoteAddress().getAddress().getHostAddress().toString();
-		wsSessions.add(wsSession);
-		wsSessionMap.put(wsSession, "name");
-		Map map=new HashMap();
-		map.put("cnt", wsSessions.size());
-		map.put("info", ip+" �뿉�꽌 �젒�냽�븯�뀲�뒿�땲�떎.");
-		wsSession.sendMessage(new TextMessage(new Gson().toJson(map)));
-		for(WebSocketSession ws : wsSessions) {
-			ws.sendMessage(new TextMessage("HELLO"));
+	public void afterConnectionEstablished(WebSocketSession wsSession, HttpServletRequest application) throws Exception {
+		for(WebSocketSession ws : wsSessions.keySet()) {
+			ws.sendMessage(new TextMessage("name"+"님이 접속하셨습니다."));
 		}
-		System.out.println("current size : "+wsSessions.size());
+		wsSessions.put(wsSession, "name");
+		wsSessions.values();
+		Map map=new HashMap();
+		map.put("logons", wsSessions.values());
+		for(WebSocketSession ws : wsSessions.keySet()) {	
+			ws.sendMessage(new TextMessage(new Gson().toJson(map)));
+		}
 	}
 	
 	@Override
 	protected void handleTextMessage(WebSocketSession wsSession, TextMessage message) throws Exception {
-		for(WebSocketSession ws : wsSessions) {
-			wsSession.sendMessage(new TextMessage(new Gson().toJson(message)));
+		for(WebSocketSession ws : wsSessions.keySet()) {
+			ws.sendMessage(new TextMessage(new Gson().toJson(message)));
 		}
 	}
 	
 	@Override
 	public void afterConnectionClosed(WebSocketSession wsSession, CloseStatus status) throws Exception {
 		wsSessions.remove(wsSession);
-		wsSessionMap.remove("");
-		for(WebSocketSession ws : wsSessions) {
-			wsSession.sendMessage(new TextMessage(new Gson().toJson(message)));
+		for(WebSocketSession ws : wsSessions.keySet()) {
+			ws.sendMessage(new TextMessage("name"+"님이 접속을 해제하셨습니다."));
 		}
 		
 	}
