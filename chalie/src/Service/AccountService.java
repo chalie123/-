@@ -1,5 +1,6 @@
 package Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -15,13 +16,18 @@ public class AccountService {
 	@Autowired
 	SqlSessionTemplate template;
 
+	public boolean verify(String email) {
+		return template.update("lib_account.verify", email)==1;
+	}
+	
 	public boolean overlapCheck(Map<String, String> param) {
-		Map map=template.selectOne("lib_account.overlapCheck", param);
-		map.size();
-		if(map.size()!=0) {
-			return false; 
+		System.out.println(param.get("name"));
+		Map map=new HashMap();
+		map=template.selectOne("lib_account.overlapCheck", param);
+		if(map==null) {
+			return true; 
 		}else {
-			return true;
+			return false;
 		}
 	}
 	
