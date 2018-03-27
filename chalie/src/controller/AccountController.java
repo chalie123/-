@@ -59,6 +59,7 @@ public class AccountController {
 	@RequestMapping("/verify/{code}")
 	public String verifyHandle(@PathVariable String code) {
 		boolean rst=AccountService.verify(code);
+		
 		if(rst) {
 			return "index";
 		}else {
