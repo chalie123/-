@@ -41,8 +41,9 @@ public class WebSocketController extends TextWebSocketHandler{
 	
 	@Override
 	protected void handleTextMessage(WebSocketSession wsSession, TextMessage message) throws Exception {
+		String json="{data:[{text:"+wsSessions.get(wsSession)+":"+message+"}]}";
 		for(WebSocketSession ws : wsSessions.keySet()) {
-			ws.sendMessage(new TextMessage(new Gson().toJson(message)));
+			ws.sendMessage(new TextMessage(new Gson().toJson(json)));
 		}
 	}
 	

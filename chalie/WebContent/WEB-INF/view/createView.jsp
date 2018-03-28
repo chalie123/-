@@ -98,11 +98,11 @@ footer {
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/create"><span class="glyphicon glyphicon-log-in"></span>
+					<li><a href="/account/createView"><span class="glyphicon glyphicon-log-in"></span>
 							Create</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/logon"><span class="glyphicon glyphicon-log-in"></span>
+					<li><a href="/account/loginView"><span class="glyphicon glyphicon-log-in"></span>
 							Login</a></li>
 				</ul>
 			</div>

@@ -108,17 +108,17 @@ public class AccountController {
 		if (param.get("cvc") != null)
 			param.put("cvc", AES256.encrypt(param.get("cvc"), key));
 		String rst = AccountService.create(param);
-		if (application.getAttribute("logons") == null) {
-			List<String> logons = new ArrayList<>();
-			application.setAttribute("logons", logons.add(rst));
-		} else {
-			List<String> logons = new ArrayList<>();
-			logons = (List<String>) application.getAttribute("logons");
-			logons.add(rst);
-			application.setAttribute("logons", logons);
-		}
-		session.setAttribute("logon", rst);
 		if (rst.length() != 0) {
+			if (application.getAttribute("logons") == null) {
+				List<String> logons = new ArrayList<>();
+				application.setAttribute("logons", logons.add(rst));
+			} else {
+				List<String> logons = new ArrayList<>();
+				logons = (List<String>) application.getAttribute("logons");
+				logons.add(rst);
+				application.setAttribute("logons", logons);
+			}
+			session.setAttribute("logon", rst);
 			return "/index";
 		} else {
 			return "/index";

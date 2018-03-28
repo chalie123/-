@@ -21,7 +21,6 @@ public class AccountService {
 	}
 	
 	public boolean overlapCheck(Map<String, String> param) {
-		System.out.println(param.get("name"));
 		Map map=new HashMap();
 		map=template.selectOne("lib_account.overlapCheck", param);
 		if(map==null) {
@@ -35,10 +34,10 @@ public class AccountService {
 		int rst = template.insert("lib_account.create", param);
 		if (rst != 1) {
 			System.out.println("[SYSTEM]<Account> : Account creation with name = " + param.get("name") + " failed.");
-			return param.get("name");
+			return "";
 		} else {
 			System.out.println("[SYSTEM]<Account> : Account created with name = " + param.get("name") + ".");
-			return "";
+			return param.get("name");
 		}
 	}
 
