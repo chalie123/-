@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="books">
+	<insert id="add">
+		insert into books values(#{NO},	#{SUBJECT}, #{AUTHOR}, #{EA_ISBN}, #{PUBLISHER}, #{SERIES_NO}, #{PUBLISH_PREDATE}, #{FORM_DETAIL}, #{SERIES_TITLE}, #{PRE_PRICE}, #{TITLE})
+	</insert>
+	<select id="search" resultType="hashmap">
+		select * from books where NO like #{arg} or SUBJECT like #{arg} or AUTHOR like #{arg} or EA_ISBN like #{arg} or PUBLISHER like #{arg} and SERIES_NO like #{arg} or PUBLISH_PREDATE like #{arg} or FORM_DETAIL like #{arg} or SERIES_TITLE like #{arg} or PRE_PRICE like #{arg} or TITLE like #{arg} order by NO asc
+	</select>
+</mapper>
+
