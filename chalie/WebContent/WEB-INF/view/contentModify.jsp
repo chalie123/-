@@ -3,6 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://yourdomain.com/script.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <html>
 <head>
 <title>Insert title here</title>
@@ -17,15 +19,15 @@
 		<br> 본문 :
 		<textarea rows="20" cols="120" style="resize: none;" name="text"> ${text.TEXT }</textarea>
 		<br>
-		<br> 사진 : <input type="file" multiple name="other"><br>
+		<p id="photo_preview"></p>
+		<br>
+		<br> 사진 : <input type="file" multiple name="other" id="photo"><br>
 		업로드된 파일<br/>
 		<c:if test="${files !=null }">
 			<c:set var="cnt" value="0"></c:set>
 			<c:forEach var="i" items="${files}">
 				<img src="${i.UPLOAD_FILE}" width="200px" height="200px"><br/>
-				삭제 추가 
-				1.디비에서 저장위치 빼기 
-				2.서버 컴퓨터에 사진 삭제
+				삭제시 체크 박스 체크 ->
 				<input type="checkbox" name="deleteFile" value="${i.UPLOAD_FILE}">
 				<br />
 			</c:forEach>
@@ -35,6 +37,21 @@
 		<button type="submit">확인</button>
 	</form>
 </body>
-<script>
+<script >
+$("#photo").on("change",function() {
+	var files = this.files;
+	$("#photo_preview").html("");
+	for (var i = 0; i < files.length; i++) {
+		console.log(files[i]);
+		var reader = new FileReader();
+		reader.readAsDataURL(files[i]);
+		reader.onload = function() { // 파일다 읽어들였을때
+			console.log(reader);
+			$("#photo_preview")
+					.append(
+							"<img src=\""+ this.result+"\" style=\"width:70px;height:70px; margin:5px;\"/>");
+		}
+	}
+});
 </script>
 </html>
