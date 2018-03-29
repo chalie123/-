@@ -25,16 +25,20 @@
 <script>
 $("#photo").on("change",function() {
 	var files = this.files;
+	
 	$("#photo_preview").html("");
 	for (var i = 0; i < files.length; i++) {
-		console.log(files[i]);
+		if(!files[i].type.startsWith("image")){
+			this.value=null;
+			$("#photo_preview").html("");
+			window.alert("사진만 업로드 가능합니다.");
+			break;
+		}
 		var reader = new FileReader();
 		reader.readAsDataURL(files[i]);
-		reader.onload = function() { // 파일다 읽어들였을때
-			console.log(reader);
+		reader.onload = function() {
 			$("#photo_preview")
-					.append(
-							"<img src=\""+ this.result+"\" style=\"width:70px;height:70px; margin:5px;\"/>");
+					.append("<img src=\""+ this.result+"\" style=\"width:200px;height:200px; margin:5px;\"/>");
 		}
 	}
 });
