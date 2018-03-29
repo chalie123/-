@@ -29,6 +29,6 @@ public class SearchController {
 //		list.clear();
 		session.setAttribute("searchResult", list);
 		
-		return "search";
+		return "searchView";
 	}
 }

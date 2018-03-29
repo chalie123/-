@@ -5,8 +5,10 @@ import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -88,11 +90,11 @@ public class AccountController {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/create")
-	public String createHandle(HttpServletRequest application, HttpSession session,
+	public String createHandle(HttpServletRequest request, HttpSession session,
 			@RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
-		// String key=(String) application.getAttribute("key");
-		// ¾ÏÈ£È­ Å°´Â 16ÀÚ¸® ¼ýÀÚ ¿µ¹® String
+		// String key=(String) request.getServletContext().getAttribute("key");
+		// ï¿½ï¿½È£È­ Å°ï¿½ï¿½ 16ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ String
 		String key = "1234567890123456";
 		param.put("serial", UUID.randomUUID().toString());
 		param.put("email", AES256.encrypt(param.get("email"), key));
@@ -108,17 +110,17 @@ public class AccountController {
 		if (param.get("cvc") != null)
 			param.put("cvc", AES256.encrypt(param.get("cvc"), key));
 		String rst = AccountService.create(param);
+		if (request.getServletContext().getAttribute("logons") == null) {
+			Set logons = new HashSet();
+			request.getServletContext().setAttribute("logons", logons.add(rst));
+		} else {
+			Set logons = new HashSet();
+			logons = (Set) request.getServletContext().getAttribute("logons");
+			logons.add(rst);
+			request.getServletContext().setAttribute("logons", logons);
+		}
+		session.setAttribute("logon", rst);
 		if (rst.length() != 0) {
-			if (application.getAttribute("logons") == null) {
-				List<String> logons = new ArrayList<>();
-				application.setAttribute("logons", logons.add(rst));
-			} else {
-				List<String> logons = new ArrayList<>();
-				logons = (List<String>) application.getAttribute("logons");
-				logons.add(rst);
-				application.setAttribute("logons", logons);
-			}
-			session.setAttribute("logon", rst);
 			return "/index";
 		} else {
 			return "/index";
@@ -128,8 +130,8 @@ public class AccountController {
 	@RequestMapping("/modify")
 	public String modifyHandle(HttpSession session, @RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
-		// String key=(String) application.getAttribute("key");
-		// ¾ÏÈ£È­ Å°´Â 16ÀÚ¸® ¼ýÀÚ ¿µ¹® String
+		// String key=(String) request.getServletContext().getAttribute("key");
+		// ï¿½ï¿½È£È­ Å°ï¿½ï¿½ 16ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ String
 		String key = "1234567890123456";
 		param.put("pass", SHA256.encrypt(param.get("pass")));
 		if (param.get("phone") != null)
@@ -152,40 +154,44 @@ public class AccountController {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/login")
-	public String loginHandle(HttpServletRequest application, HttpSession session,
+	public String loginHandle(HttpServletRequest request, HttpSession session,
 			@RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
-		// String key=(String) application.getAttribute("key");
-		// ¾ÏÈ£È­ Å°´Â 16ÀÚ¸® ¼ýÀÚ ¿µ¹® String
+		// String key=(String) request.getServletContext().getAttribute("key");
+		// ï¿½ï¿½È£È­ Å°ï¿½ï¿½ 16ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ String
 		String key = "1234567890123456";
 		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
 		String rst = AccountService.login(param);
 		if (rst.length() != 0) {
-			if (application.getAttribute("logons") == null) {
-				List<String> logons = new ArrayList<>();
-				application.setAttribute("logons", logons.add(rst));
+			if (request.getServletContext().getAttribute("logons") == null) {
+				Set logons = new HashSet();
+				logons.add(rst.substring(0,rst.length()-1));
+				request.getServletContext().setAttribute("logons", logons);
 			} else {
-				List<String> logons = new ArrayList<>();
-				logons = (List<String>) application.getAttribute("logons");
+				Set logons = new HashSet();
+				logons = (Set) request.getServletContext().getAttribute("logons");
 				logons.add(rst);
-				application.setAttribute("logons", logons);
+				request.getServletContext().setAttribute("logons", logons);
 			}
-			session.setAttribute("logon", rst);
+			session.setAttribute("logon", rst.substring(0, rst.length()-1));
+			if(rst.substring(rst.length()-1,rst.length()).equals("9")) {
+				session.setAttribute("admin", true);
+			}
 			return "/index";
 		} else {
 			return "/index";
-
 		}
 	}
-
-	@SuppressWarnings("unchecked")
+	
+	@SuppressWarnings("rawtypes")
 	@RequestMapping("/logout")
-	public String logoutHandle(HttpServletRequest application, HttpSession session) {
-		List<String> logons = new ArrayList<>();
-		logons = (List<String>) application.getAttribute("logons");
+	public String logoutHandle(HttpServletRequest request, HttpSession session) {
+		Set logons = (Set) request.getServletContext().getAttribute("logons");
+		System.out.println();
 		logons.remove(session.getAttribute("logon"));
-		application.setAttribute("logons", logons);
+		request.getServletContext().setAttribute("logons", logons);
+		AccountService.logout((String) session.getAttribute("logon"));
 		session.removeAttribute("logon");
 		return "/index";
 	}

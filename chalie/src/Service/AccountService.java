@@ -21,6 +21,7 @@ public class AccountService {
 	}
 	
 	public boolean overlapCheck(Map<String, String> param) {
+		System.out.println(param.get("name"));
 		Map map=new HashMap();
 		map=template.selectOne("lib_account.overlapCheck", param);
 		if(map==null) {
@@ -34,9 +35,11 @@ public class AccountService {
 		int rst = template.insert("lib_account.create", param);
 		if (rst != 1) {
 			System.out.println("[SYSTEM]<Account> : Account creation with name = " + param.get("name") + " failed.");
+			
 			return "";
 		} else {
 			System.out.println("[SYSTEM]<Account> : Account created with name = " + param.get("name") + ".");
+
 			return param.get("name");
 		}
 	}
@@ -45,11 +48,15 @@ public class AccountService {
 		List<Map> list = template.selectList("lib_account.login", param);
 		if (list.size() == 1) {
 			System.out.println("[SYSTEM]<Account> : " + list.get(0).get("NAME") + " Logged In.");
-			return (String) list.get(0).get("NAME");
+			return list.get(0).get("NAME")+list.get(0).get("VERIFY_EMAIL").toString();
 		} else {
 			System.out.println("[SYSTEM]<Account> : Login attempt with name = " + param.get("name") + " failed.");
 			return "";
 		}
+	}
+	
+	public void logout(String name) {
+		System.out.println("[SYSTEM]<Account> : "+name+" logged out.");
 	}
 
 	public String modify(HttpSession session, Map<String, String> param) {

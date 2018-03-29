@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,17 +7,17 @@
 </head>
 <body>
 	<div id="container" style="width:800px;border:5px solid grey;padding:10px">
-		<div id="chatlog" style="padding: 5px; border: 1px solid black">
+		<div id="chatlog" style="height:600px;padding: 5px; border: 1px solid black;overflow-y:scroll;word-break:break-all">
 		</div>
 		<hr/>
 		<input type="text" style="height: 80px; width: 500px" id="chat">
 	</div>
-	<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
 		var ws = new WebSocket("ws://${pageContext.request.serverName }/WebSocket");
-		// 연결이 됬을때.
 		$(document).ready(function(){
-			$("input[id=chat]").keyup(function(key){
+			$("input[id=chat]").keydown(function(key){
 				if(key.keyCode==13){
 					sendMessage();
 				}
@@ -36,18 +36,18 @@
 		
 		
 		ws.onopen=function(){
-			console.log("opened ");
-			console.log(this);
+			console.log("WS Connected.");
 		}
 		// 메시지가 들어올때.
 		ws.onmessage=function(resp){
-			console.log(resp);
 			var obj=JSON.parse(resp.data);
-			$("#chatlog").append("<p>"+obj.text+<"</p>");
+			if(obj.name!=null){
+				$("#chatlog").append("<p>"+obj.name+" : "+obj.text+"</p>");
+			}
 		}
 		// 연결이 끊길때.
 		ws.onclose=function(){
-			window.alert("연결이 해제되었습니다.");
+			window.alert("연결이 해제되었습니다. 새로고침을 눌러 다시 접속해주시기 바랍니다.");
 		}
 	
 	</script>
