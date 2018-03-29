@@ -44,6 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 	</select>
 	<select id="memberResult" resultType="hashmap">
-	select * from lib_account
+	select * from lib_account 
 	</select>
+	
 </mapper>

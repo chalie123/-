@@ -56,7 +56,7 @@ public class AccountService {
 	}
 
 	public String modify(HttpSession session, Map<String, String> param) {
-		param.put("name", (String) session.getAttribute("name"));
+		param.put("name", (String) session.getAttribute("logon"));
 		int rst=template.update("lib_account.modify", param);
 		System.out.println("[SYSTEM]<Account> : " + param.get("name") + " modified account datail.");
 		return rst==1?param.get("name"):"";

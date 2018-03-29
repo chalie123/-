@@ -104,21 +104,30 @@ footer {
 								<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown">관리자 <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="#">회원정보</a></li>
+									<li><a href="/admin/member">회원정보</a></li>
 									<li><a href="#">회원 폼 자료 </a></li>
 									<li><a href="#">커뮤니티관리</a></li>
 								</ul></li>
-							</c:when>
+							</c:when>	
+							
 						</c:choose>
 				</ul>
 				
 				
-				
-				
+				<c:choose>
+				<c:when test="${logon==null }">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="/account/createView"><span
 							class="glyphicon glyphicon-log-in"></span> Create</a></li>
 				</ul>
+				</c:when>
+			
+				</c:choose>
+				
+				
+				
+				
+				
 				<c:choose>
 					<c:when test="${logon==null }">
 						<ul class="nav navbar-nav navbar-right">
@@ -128,11 +137,13 @@ footer {
 					</c:when>
 					<c:otherwise>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/accountManagement"><span
-									class="glyphicon glyphicon-log-in"></span> ${logon }</a></li>
+							<li><a href="/account/modifyView"><span
+									class="glyphicon glyphicon-log-in"></span> ${logon }님 환영합니다.</a></li>
 						</ul>
 					</c:otherwise>
 				</c:choose>
+				
+				
 				<c:choose>
 					<c:when test="${logon!=null }">
 						<ul class="nav navbar-nav navbar-right">

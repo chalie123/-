@@ -6,8 +6,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:forEach var="list" items="${memberResult }" varStatus="status">
-		번호 : ${list.NAME }, 제목 : ${list.EMAIL }, 저자 : ${list.AUTHOR }, 분류 : ${list.SUBJECT }, 발행일 : ${list.PUBLISH_PREDATE }, 출판사 : ${list.PUBLISHER }, ISBN : ${list.EA_ISBN }, 형식 : ${list.FORM_DETAIL }, 발행가 : ${list.PRE_PRICE }, 시리즈명 : ${list.SERIES_TITLE }
+<br/>
+<br/>
+			<h2 align="center"><button type="submit">저장</button></h2>
+<h3>회원관리</h3>	
+<br/>
+	<c:forEach var="list" items="${memberResult }" varStatus="status" >
+	
+	<hr/>
+		이름 : ${list.NAME },&nbsp;&nbsp; 이메일 : ${list.EMAIL }, &nbsp;&nbsp;시리즈명 : ${list.JOINDATE },&nbsp;&nbsp;
+			등급 : ${list.VERIFY_EMAIL }&nbsp;<button type="submit" name="ratingUp">↑</button><button type="submit" name="ratingDown">↓</button>,&nbsp;&nbsp; 
+					시리얼 : ${list.SERIAL }
 	</c:forEach>
 </body>
 </html>

@@ -180,7 +180,7 @@ public class AccountController {
 			}
 			return "/index";
 		} else {
-			return "/index";
+			return "/createView";
 		}
 	}
 	
@@ -191,6 +191,7 @@ public class AccountController {
 		logons.remove(session.getAttribute("logon"));
 		request.getServletContext().setAttribute("logons", logons);
 		session.removeAttribute("logon");
+		
 		return "/index";
 	}
 
