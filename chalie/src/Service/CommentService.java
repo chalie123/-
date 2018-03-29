@@ -19,8 +19,12 @@ public class CommentService {
 	public List<Map> commentRegisterService(Map<String, String> param) {
 		return template.selectList("comment.registerComments", param);
 	}
-	//삭제
+	//하나의 게시물에 달린 댓글 전체 삭제
 	public boolean commentDeleteService(Map<String, String> param) {
 		return template.delete("comment.deleteComments", param)==1;
+	}
+	//하나의 댓글 삭제
+	public boolean oneCommentDeleteService(Map<String, String> param) {
+		return template.delete("comment.deleteOneComment", param)==1;
 	}
 }

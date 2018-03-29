@@ -187,6 +187,16 @@ public class BoardController {
 	@RequestMapping("/contentRewrite")
 	public String modifyContentController(@RequestParam Map<String, String> param, HttpSession session,
 			HttpServletRequest hsr, @RequestParam(name = "other") MultipartFile[] other) {
+		//deleteFile 로 넘어오는 파일들 삭제 1.디비 2.서버 컴퓨터
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		ServletContext ctx = hsr.getServletContext();
 		for (MultipartFile file : other) {
 			if (!file.isEmpty()) {
@@ -209,5 +219,19 @@ public class BoardController {
 		// 업로드 삭제 (뷰,콘트롤러 둘다 않함)
 		return "redirect:/contentIndex";
 	}
+	//댓글 삭제 컨트롤러 
+	@RequestMapping("/commentDelete")
+	public ModelAndView commentDeleteController(@RequestParam Map<String, String> param) {
+		//댓글 삭제 메서드 작동
+		System.out.println(param.toString());
+		commentService.oneCommentDeleteService(param);
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/contentView");
+		mav.addObject("text", freeBoardService.freeBoardService(param).get(0));
+		mav.addObject("comments", commentService.commentService(param));
+		mav.addObject("files", uploadService.uploadSelectService(param));
+		return mav;
+	}
+
 
 }

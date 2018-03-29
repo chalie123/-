@@ -13,7 +13,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		#{text})
 	</insert>
 	
+	<!-- 댓글 전체 삭제 -->
 	<delete id="deleteComments">
 		delete from FREE_BOARD_COMMENTS where UUID=#{UUID}
+	</delete>
+	<!-- 댓글 하나 삭제 -->
+	<delete id="deleteOneComment">
+		delete from FREE_BOARD_COMMENTS where comments_UUID=#{comments_UUID}
 	</delete>
 </mapper>

@@ -24,6 +24,9 @@
 			<c:forEach var="i" items="${files}">
 				<img src="${i.UPLOAD_FILE}" width="200px" height="200px"><br/>
 				삭제 추가 
+				1.디비에서 저장위치 빼기 
+				2.서버 컴퓨터에 사진 삭제
+				<input type="checkbox" name="deleteFile" value="${i.UPLOAD_FILE}">
 				<br />
 			</c:forEach>
 		</c:if>
