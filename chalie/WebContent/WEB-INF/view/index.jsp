@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
 <title>찰리 도서관</title>
@@ -53,11 +53,12 @@ footer {
 </head>
 <body>
 	<a href="/">
-	<div align="center">
-		<h1><b>
-		<img src="/image/logo.gif" alt="도서관"/>
-		</b></h1>
-	</div>
+		<div align="center">
+			<h1>
+				<b> <img src="/image/logo.gif" alt="도서관" />
+				</b>
+			</h1>
+		</div>
 	</a>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -97,25 +98,53 @@ footer {
 							<li><a href="#">비도서검색 </a></li>
 							<li><a href="#">책 신 청 </a></li>
 						</ul></li>
+						
+						<c:choose>
+							<c:when test="${admin!=null }">
+								<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown">관리자 <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="#">회원정보</a></li>
+									<li><a href="#">회원 폼 자료 </a></li>
+									<li><a href="#">커뮤니티관리</a></li>
+								</ul></li>
+							</c:when>
+						</c:choose>
 				</ul>
+				
+				
+				
+				
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="/account/createView"><span class="glyphicon glyphicon-log-in"></span>
-							Create</a></li>
+					<li><a href="/account/createView"><span
+							class="glyphicon glyphicon-log-in"></span> Create</a></li>
 				</ul>
 				<c:choose>
 					<c:when test="${logon==null }">
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/account/loginView"><span class="glyphicon glyphicon-log-in"></span>
-									Login</a></li>
+							<li><a href="/account/loginView"><span
+									class="glyphicon glyphicon-log-in"></span> Login</a></li>
 						</ul>
 					</c:when>
 					<c:otherwise>
 						<ul class="nav navbar-nav navbar-right">
-							<li><a href="/accountManagement"><span class="glyphicon glyphicon-log-in"></span>
-								${logon }</a></li>
+							<li><a href="/accountManagement"><span
+									class="glyphicon glyphicon-log-in"></span> ${logon }</a></li>
 						</ul>
 					</c:otherwise>
 				</c:choose>
+				<c:choose>
+					<c:when test="${logon!=null }">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="/account/logout"><span
+									class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+						</ul>
+					</c:when>
+				</c:choose>
+				
+				
+				
+					
 			</div>
 		</div>
 	</nav>
@@ -123,41 +152,38 @@ footer {
 	<div class="container-fluid text-center">
 		<div class="row content">
 			<div class="col-sm-2 sidenav">
-				<h3 align="center">접속자 채팅창</h3><br/>
-				
-				<textarea rows="20" cols="22" class="placeholder">접속자 수</textarea><br/>
-				<input type="text"/>
-				 
-			
+				<h3 align="center">접속자 채팅창</h3>
+				<br />
+
+				<textarea rows="20" cols="22" class="placeholder">접속자 수</textarea>
+				<br /> <input type="text" />
+
+
 			</div>
-			
+
 			<div class="col-sm-8 text-left">
-			
-				<h1 align="center">이달의 어린이 도서</h1><br/>
+
+				<h1 align="center">이달의 어린이 도서</h1>
+				<br />
 				<div align="center">
-				<a href="#">
-				<img src="/image/894481.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/x9788997984220.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/x9788958761761.jpg" width="300px" height="300px"/>
-				</a>
-				<br/>
-				<br/>
-		</div>
-				<h1 align="center">이달의 성인 도서</h1><br/>
+					<a href="#"> <img src="/image/894481.jpg" width="300px"
+						height="300px" />
+					</a> <a href="#"> <img src="/image/x9788997984220.jpg"
+						width="300px" height="300px" />
+					</a> <a href="#"> <img src="/image/x9788958761761.jpg"
+						width="300px" height="300px" />
+					</a> <br /> <br />
+				</div>
+				<h1 align="center">이달의 성인 도서</h1>
+				<br />
 				<div align="center">
-				<a href="#">
-				<img src="/image/656021.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/00.jpg" width="300px" height="300px"/>
-				</a>
-				<a href="#">
-				<img src="/image/07973881.jpg" width="300px" height="300px"/>
-				</a>
+					<a href="#"> <img src="/image/656021.jpg" width="300px"
+						height="300px" />
+					</a> <a href="#"> <img src="/image/00.jpg" width="300px"
+						height="300px" />
+					</a> <a href="#"> <img src="/image/07973881.jpg" width="300px"
+						height="300px" />
+					</a>
 				</div>
 			</div>
 			<div class="col-sm-2 sidenav">
@@ -169,17 +195,19 @@ footer {
 				</div>
 				<h3>도서 검색</h3>
 				<form action="/search">
-					<input type="text" name="arg"><br/><br/>
+					<input type="text" name="arg"><br />
+					<br />
 					<button type="submit">확인</button>
 				</form>
 			</div>
 		</div>
 	</div>
 	<footer class="container-fluid text-center">
-		<p>KG ITBANK 찰리조 도서관 소개 개인정보취급 방침 채용 안내오시는길 환불규정안내 강남점 서울특별시 강남구 강남대로84길 16 제이스타워 11층~12층 사업자등록번호 :
-			000-00-00000 l 법인등록번호 : 0000000-0000000 통신판매번호 : 제 00-000-0호 0
-			상표권출원번호 : 000000000 고객지원센터 대표번호 : 00-0000-0000 0 FAX :
-			00-000-0000 Copyright ⓒ KG ITBANK 찰리조 도서관 All rights reserved.</p>
+		<p>KG ITBANK 찰리조 도서관 소개 개인정보취급 방침 채용 안내오시는길 환불규정안내 강남점 서울특별시 강남구
+			강남대로84길 16 제이스타워 11층~12층 사업자등록번호 : 000-00-00000 l 법인등록번호 :
+			0000000-0000000 통신판매번호 : 제 00-000-0호 0 상표권출원번호 : 000000000 고객지원센터
+			대표번호 : 00-0000-0000 0 FAX : 00-000-0000 Copyright ⓒ KG ITBANK 찰리조 도서관
+			All rights reserved.</p>
 	</footer>
 
 </body>

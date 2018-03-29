@@ -35,10 +35,12 @@ public class AccountService {
 		int rst = template.insert("lib_account.create", param);
 		if (rst != 1) {
 			System.out.println("[SYSTEM]<Account> : Account creation with name = " + param.get("name") + " failed.");
-			return param.get("name");
+			
+			return "";
 		} else {
 			System.out.println("[SYSTEM]<Account> : Account created with name = " + param.get("name") + ".");
-			return "";
+
+			return param.get("name");
 		}
 	}
 
@@ -46,7 +48,7 @@ public class AccountService {
 		List<Map> list = template.selectList("lib_account.login", param);
 		if (list.size() == 1) {
 			System.out.println("[SYSTEM]<Account> : " + list.get(0).get("NAME") + " Logged In.");
-			return (String) list.get(0).get("NAME");
+			return list.get(0).get("NAME")+list.get(0).get("VERIFY_EMAIL").toString();
 		} else {
 			System.out.println("[SYSTEM]<Account> : Login attempt with name = " + param.get("name") + " failed.");
 			return "";
