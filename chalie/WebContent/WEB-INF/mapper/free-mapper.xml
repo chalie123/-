@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="free">
+	<select id="selectAll" resultType="HashMap">
+		<!-- //메퍼에서 뽑아올때, 최신순으로 데이터가 나오게 수정 -->
+		select * from free_board
+	</select>
+	<select id="selectSearch" resultType="HashMap">
+		select * from free_board where title like #{key} or user_id like #{key} or
+		tags like #{key}
+	</select>
+	<select id="selectText" resultType="HashMap">
+		select * from free_board where UUID = #{UUID}
+	</select>
+	<update id="updateViews">
+		update free_board set views =views+1 where UUID = #{UUID}
+	</update>
+	<insert id="registerContent">
+		insert into free_board values
+		(#{title},#{UUID},sysdate,null,#{user_id},#{text},#{tags},0)
+	</insert>
+	<update id="updateContent">
+		update free_board set title = #{title} , lastmodifieddate = sysdate , text = #{text} , tags =#{tags} where UUID=#{UUID} 
+	</update>
+	<delete id="deleteContent">
+		delete from free_board where UUID = #{UUID}
+	</delete>
+</mapper>

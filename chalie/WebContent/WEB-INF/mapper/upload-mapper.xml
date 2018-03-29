@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="upload">
+	<insert id="insert">
+		insert into FREE_BOARD_UPLOAD_FILE values (#{UUID},#{upload_File})	
+	</insert>
+	<insert id="reInsert">
+		insert into FREE_BOARD_UPLOAD_FILE values (#{UUID},#{upload_File})	
+	</insert>
+	<select id="select" resultType="HashMap">
+		select * from FREE_BOARD_UPLOAD_FILE where UUID =#{UUID}
+	</select>
+	<delete id="delete">
+		delete from  FREE_BOARD_UPLOAD_FILE where UUID=#{UUID}
+	</delete>
+</mapper>
