@@ -187,12 +187,13 @@ public class BoardController {
 	@RequestMapping("/contentRewrite")
 	public String modifyContentController(@RequestParam Map<String, String> param, HttpSession session,
 			HttpServletRequest hsr, @RequestParam(name = "other") MultipartFile[] other) {
-		//deleteFile 로 넘어오는 파일들 삭제 1.디비 2.서버 컴퓨터
+		//deleteFile 로 넘어오는 파일들 삭제 
+		//1.디비
 		
 		
 		
 		
-		
+		//2.서버 컴퓨터
 		
 		
 		
