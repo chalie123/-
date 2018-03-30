@@ -86,6 +86,7 @@ footer {
 						data-toggle="dropdown" href="contentIndex">커뮤니티 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
 							<li><a href="contentIndex">자유게시판</a></li>
+							<li><a href="/chat">채팅</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
 						data-toggle="dropdown" href="t_main4-1">자료검색 <span class="caret"></span></a>
