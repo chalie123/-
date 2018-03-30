@@ -11,7 +11,6 @@ public class MainController {
 		
 		
 		
-		return"index";
-		
+		return "t_main0";
 	}
 }

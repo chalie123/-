@@ -31,7 +31,6 @@ public class BoardController {
 	CommentService commentService;
 	@Autowired
 	UploadService uploadService;
-
 	// 게시물 목록에 세팅 처리 메서드
 	@RequestMapping("/contentIndex")
 	public ModelAndView indexViewController(@RequestParam Map<String, String> param) {
@@ -52,7 +51,6 @@ public class BoardController {
 			maxIndex = freeBoardList.size() / 20;
 		}
 		List<Map> list = new LinkedList<>();
-
 		for (int i = index * 20; i < (index + 1) * 20; i++) {
 			if (freeBoardList.size() - 1 < i) {
 				break;
@@ -60,7 +58,7 @@ public class BoardController {
 			list.add(freeBoardList.get(i));
 		}
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/contentIndex");
+		mav.setViewName("contentIndex");
 		mav.addObject("list", list);
 		mav.addObject("index", index);
 		mav.addObject("maxIndex", maxIndex);
@@ -71,7 +69,7 @@ public class BoardController {
 	@RequestMapping("/contentView")
 	public ModelAndView textViewController(@RequestParam Map<String, String> param) {
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/contentView");
+		mav.setViewName("contentView");
 		mav.addObject("text", freeBoardService.freeBoardService(param).get(0));
 		mav.addObject("comments", commentService.commentService(param));
 		mav.addObject("files", uploadService.uploadSelectService(param));
@@ -93,7 +91,7 @@ public class BoardController {
 			param.put("comments_UUID", uuid);
 			param.put("user_id", (String) session.getAttribute("id"));
 			commentService.commentRegisterService(param);
-			mav.setViewName("/contentView");
+			mav.setViewName("contentView");
 		}
 		String contentUUID = param.get("UUID");
 		Map<String, String> UUIDMap = new HashMap<>();
@@ -110,7 +108,7 @@ public class BoardController {
 			// 로그인이 안됐으니 로그인 창으로 보넨다.
 			return "";
 		} else {
-			return "/contentWrite";
+			return "contentWrite";
 		}
 	}
 
@@ -129,7 +127,7 @@ public class BoardController {
 			param.put("UUID", uuid);
 			param.put("user_id", (String) session.getAttribute("id"));
 			freeBoardService.freeBoardRegisterService(param);
-			mav.setViewName("/contentView");
+			mav.setViewName("contentView");
 		}
 		ServletContext ctx = hsr.getServletContext();
 		for (MultipartFile file : other) {
@@ -164,7 +162,7 @@ public class BoardController {
 	public ModelAndView modifyController(@RequestParam Map<String, String> param) {
 		ModelAndView mav = new ModelAndView();
 		if (param.get("delete") != null) {
-			mav.setViewName("redirect:/contentIndex");
+			mav.setViewName("redirect: /contentIndex");
 			// 삭제 메서드 작동
 			param.remove("delete");
 			commentService.commentDeleteService(param);
@@ -174,7 +172,7 @@ public class BoardController {
 			return mav;
 		}
 		param.remove("modify");
-		mav.setViewName("/contentModify");
+		mav.setViewName("contentModify");
 		mav.addObject("text", freeBoardService.freeBoardService(param).get(0));
 		if (uploadService.uploadSelectService(param) != null)
 			mav.addObject("files", uploadService.uploadSelectService(param));
@@ -222,7 +220,7 @@ public class BoardController {
 		}
 		freeBoardService.freeBoardUpdateContentService(param);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/contentView");
+		mav.setViewName("contentView");
 		mav.addObject("text", freeBoardService.freeBoardService(param).get(0));
 		mav.addObject("comments", commentService.commentService(param));
 		mav.addObject("files", uploadService.uploadSelectService(param));
@@ -236,7 +234,7 @@ public class BoardController {
 		System.out.println(param.toString());
 		commentService.oneCommentDeleteService(param);
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/contentView");
+		mav.setViewName("contentView");
 		mav.addObject("text", freeBoardService.freeBoardService(param).get(0));
 		mav.addObject("comments", commentService.commentService(param));
 		mav.addObject("files", uploadService.uploadSelectService(param));

@@ -2,10 +2,9 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <html lang="en">
 <head>
-<title><tiles:insertAttribute name="title"/></title>
+<title>찰리 도서관</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -54,8 +53,12 @@ footer {
 </head>
 <body>
 	<a href="/">
+		<div align="center">
+			<h1>
 				<b> <img src="/image/logo.gif" alt="도서관" />
 				</b>
+			</h1>
+		</div>
 	</a>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -70,29 +73,30 @@ footer {
 			<div class="collapse navbar-collapse" id="myNavbar">
 				<ul class="nav navbar-nav">
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="t_main1-1">도서관리 <span class="caret"></span></a>
+						data-toggle="dropdown" href="#">도서관리 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="t_menu1-1">도서목록</a></li>
-							<li><a href="t_menu1-2">도서신청</a></li>
+							<li><a href="/list">도서목록</a></li>
+							<li><a href="/word">도서신청</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="t_main2-1">고객센터 <span class="caret"></span></a>
+						data-toggle="dropdown" href="#">고객센터 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="t_menu2-1">찾아오시는길</a></li>
-							<li><a href="t_menu2-2">전화번호</a></li>
-							<li><a href="t_menu2-3">공지사항</a></li>
+							<li><a href="#">찾아오시는길</a></li>
+							<li><a href="#">전화번호</a></li>
+							<li><a href="#">공지사항</a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="contentIndex">커뮤니티 <span class="caret"></span></a>
+						data-toggle="dropdown" href="#">커뮤니티 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="contentIndex">자유게시판</a></li>
+							<li><a href="#">동아리방</a></li>
+							<li><a href="#">광 장 </a></li>
 						</ul></li>
 					<li class="dropdown"><a class="dropdown-toggle"
-						data-toggle="dropdown" href="t_main4-1">자료검색 <span class="caret"></span></a>
+						data-toggle="dropdown" href="#">자료검색 <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="t_menu4-1">통합검색</a></li>
-							<li><a href="t_menu4-2">비도서검색 </a></li>
-							<li><a href="t_menu4-3">챗 </a></li>
+							<li><a href="#">통합검색</a></li>
+							<li><a href="#">비도서검색 </a></li>
+							<li><a href="/chat">챗 </a></li>
 						</ul></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
@@ -127,9 +131,54 @@ footer {
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-		<tiles:insertAttribute name="side"/>
+			<div class="col-sm-2 sidenav">
+				<h3 align="center">접속자 채팅창</h3>
+				<br />
+
+				<textarea rows="20" cols="22" class="placeholder">접속자 수</textarea>
+				<br /> <input type="text" />
+
+
+			</div>
+
 			<div class="col-sm-8 text-left">
-				<tiles:insertAttribute name="main"/>
+
+				<h1 align="center">이달의 어린이 도서</h1>
+				<br />
+				<div align="center">
+					<a href="#"> <img src="/image/894481.jpg" width="300px"
+						height="300px" />
+					</a> <a href="#"> <img src="/image/x9788997984220.jpg"
+						width="300px" height="300px" />
+					</a> <a href="#"> <img src="/image/x9788958761761.jpg"
+						width="300px" height="300px" />
+					</a> <br /> <br />
+				</div>
+				<h1 align="center">이달의 성인 도서</h1>
+				<br />
+				<div align="center">
+					<a href="#"> <img src="/image/656021.jpg" width="300px"
+						height="300px" />
+					</a> <a href="#"> <img src="/image/00.jpg" width="300px"
+						height="300px" />
+					</a> <a href="#"> <img src="/image/07973881.jpg" width="300px"
+						height="300px" />
+					</a>
+				</div>
+			</div>
+			<div class="col-sm-2 sidenav">
+				<div class="well">
+					<p>추천도서1</p>
+				</div>
+				<div class="well">
+					<p>추천도서2</p>
+				</div>
+				<h3>도서 검색</h3>
+				<form action="/search">
+					<input type="text" name="arg"><br />
+					<br />
+					<button type="submit">확인</button>
+				</form>
 			</div>
 		</div>
 	</div>

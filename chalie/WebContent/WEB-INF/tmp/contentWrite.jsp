@@ -2,7 +2,11 @@
 	pageEncoding="UTF-8"%>
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
+<html>
+<head>
+<title>Insert title here</title>
+</head>
+<body>
 	<form action="contentWrite" method="post"
 		enctype="multipart/form-data">
 		제목 :<input type="text" name="title"><br>
@@ -41,3 +45,4 @@ $("#photo").on("change",function() {
 
 
 </script>
+</html>
