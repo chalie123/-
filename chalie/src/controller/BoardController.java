@@ -67,7 +67,6 @@ public class BoardController {
 		return mav;
 	}
 
-
 	// 게시물 본문 보기 처리 메서드
 	@RequestMapping("/contentView")
 	public ModelAndView textViewController(@RequestParam Map<String, String> param) {
@@ -105,7 +104,6 @@ public class BoardController {
 		return mav;
 	}
 
-	
 	@RequestMapping("/contentWriteView")
 	public String writeController(HttpSession session) {
 		if (session.getAttribute("id") == null) {
@@ -115,9 +113,7 @@ public class BoardController {
 			return "/contentWrite";
 		}
 	}
-	
-	
-	
+
 	@RequestMapping("/contentWrite")
 	public ModelAndView tmpController(@RequestParam Map<String, String> param, HttpSession session,
 			HttpServletRequest hsr, @RequestParam(name = "other") MultipartFile[] other) {
@@ -138,7 +134,8 @@ public class BoardController {
 		ServletContext ctx = hsr.getServletContext();
 		for (MultipartFile file : other) {
 			if (!file.isEmpty()) {
-				File dst = new File(ctx.getRealPath("/image"), file.getOriginalFilename());
+				String fileName=String.valueOf(System.currentTimeMillis());
+				File dst = new File(ctx.getRealPath("/image"), fileName);
 				try {
 					file.transferTo(dst);
 				} catch (IllegalStateException e) {
@@ -148,7 +145,7 @@ public class BoardController {
 				}
 				Map<String, String> uploadParam = new HashMap<>();
 				uploadParam.put("UUID", uuid);
-				uploadParam.put("upload_File", "/image/" + file.getOriginalFilename());
+				uploadParam.put("upload_File", "/image/" + fileName);
 				// 중복이름 방지 추가
 				uploadService.uploadService(uploadParam);
 			}
@@ -185,23 +182,30 @@ public class BoardController {
 	}
 
 	@RequestMapping("/contentRewrite")
-	public String modifyContentController(@RequestParam Map<String, String> param, HttpSession session,
-			HttpServletRequest hsr, @RequestParam(name = "other") MultipartFile[] other) {
-		//deleteFile 로 넘어오는 파일들 삭제 
-		//1.디비
-		
-		
-		
-		
-		//2.서버 컴퓨터
-		
-		
-		
-		
+	public ModelAndView modifyContentController(@RequestParam Map<String, String> param, HttpSession session,
+			HttpServletRequest hsr, @RequestParam(name = "other") MultipartFile[] other,
+			@RequestParam(name = "deleteFile", required = false) String[] deleteFile) {
 		ServletContext ctx = hsr.getServletContext();
+		// deleteFile 로 넘어오는 이름에 해당하는 파일들 삭제
+		if (deleteFile != null) {
+			for (int i = 0; i < deleteFile.length; i++) {
+				// 1.디비에서 삭제
+				Map<String, String> tmp = new HashMap<>();
+				tmp.put("deleteFile", deleteFile[i]);
+				uploadService.uploadDeleteOneService(tmp);
+				tmp.remove("deleteFile");
+				// 2.서버 컴퓨터에서 삭제
+				String fileName = deleteFile[i].split("/")[(deleteFile[i].split("/").length) - 1];
+				File tmpFile = new File(ctx.getRealPath("/image"), fileName);
+				if (tmpFile.exists()) {
+					tmpFile.delete();
+				}
+			}
+		}
 		for (MultipartFile file : other) {
 			if (!file.isEmpty()) {
-				File dst = new File(ctx.getRealPath("/image"), file.getOriginalFilename());
+				String fileName=String.valueOf(System.currentTimeMillis());
+				File dst = new File(ctx.getRealPath("/image"),fileName);
 				try {
 					file.transferTo(dst);
 				} catch (IllegalStateException e) {
@@ -211,19 +215,24 @@ public class BoardController {
 				}
 				Map<String, String> uploadParam = new HashMap<>();
 				uploadParam.put("UUID", param.get("UUID"));
-				uploadParam.put("upload_File", "/image/" + file.getOriginalFilename());
+				uploadParam.put("upload_File", "/image/" + fileName);
 				// 중복이름 방지 추가
 				uploadService.uploadService(uploadParam);
 			}
 		}
 		freeBoardService.freeBoardUpdateContentService(param);
-		// 업로드 삭제 (뷰,콘트롤러 둘다 않함)
-		return "redirect:/contentIndex";
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/contentView");
+		mav.addObject("text", freeBoardService.freeBoardService(param).get(0));
+		mav.addObject("comments", commentService.commentService(param));
+		mav.addObject("files", uploadService.uploadSelectService(param));
+		return mav;
 	}
-	//댓글 삭제 컨트롤러 
+
+	// 댓글 삭제 컨트롤러
 	@RequestMapping("/commentDelete")
 	public ModelAndView commentDeleteController(@RequestParam Map<String, String> param) {
-		//댓글 삭제 메서드 작동
+		// 댓글 삭제 메서드 작동
 		System.out.println(param.toString());
 		commentService.oneCommentDeleteService(param);
 		ModelAndView mav = new ModelAndView();
@@ -233,6 +242,5 @@ public class BoardController {
 		mav.addObject("files", uploadService.uploadSelectService(param));
 		return mav;
 	}
-
 
 }

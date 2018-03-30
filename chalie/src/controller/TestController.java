@@ -11,4 +11,9 @@ public class TestController {
 		
 		return "chatView";
 	}
+	@RequestMapping("/main")
+	public String mainHandle() {
+		
+		return "MainTemplate";
+	}
 }

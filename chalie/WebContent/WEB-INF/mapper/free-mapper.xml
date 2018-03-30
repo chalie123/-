@@ -19,10 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</update>
 	<insert id="registerContent">
 		insert into free_board values
-		(#{title},#{UUID},sysdate,null,#{user_id},#{text},#{tags},0)
+		(#{board},#{title},#{UUID},sysdate,null,#{user_id},#{text},#{tags},0)
 	</insert>
 	<update id="updateContent">
-		update free_board set title = #{title} , lastmodifieddate = sysdate , text = #{text} , tags =#{tags} where UUID=#{UUID} 
+		update free_board set board=#{board}, title = #{title} , lastmodifieddate = sysdate , text = #{text} , tags =#{tags} where UUID=#{UUID} 
 	</update>
 	<delete id="deleteContent">
 		delete from free_board where UUID = #{UUID}

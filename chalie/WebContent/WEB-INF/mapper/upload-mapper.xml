@@ -12,7 +12,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="select" resultType="HashMap">
 		select * from FREE_BOARD_UPLOAD_FILE where UUID =#{UUID}
 	</select>
+	<!-- 한 게시물의 전체 업로드 파일 삭제 -->
 	<delete id="delete">
 		delete from  FREE_BOARD_UPLOAD_FILE where UUID=#{UUID}
+	</delete>
+	<!-- 한 게시물에 있는 하나의 업로드 파일 삭제 -->
+	<delete id="deleteOne">
+		delete from  FREE_BOARD_UPLOAD_FILE where upload_File=#{deleteFile}
 	</delete>
 </mapper>

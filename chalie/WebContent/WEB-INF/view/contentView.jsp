@@ -23,6 +23,7 @@
 		</form>
 	</c:if>
 	<br> 제목 ${text.TITLE }
+	<br>게시판 ${text.BOARD }
 	<br /> 아이디${text.USER_ID }
 	<br /> 본문 ${text.TEXT }
 	<br /> 날짜
@@ -53,26 +54,27 @@
 			본문 ${o.TEXT}<br /> 
 			시간 <br />
 			<c:choose>
-				<c:when test="${text.LASTMODIFIEDDATE ==null }">
-				${text.FIRSTMODIFIEDDATE  }<br />
+				<c:when test="${o.LASTMODIFIEDDATE ==null }">
+				${o.FIRSTMODIFIEDDATE  }<br />
 				</c:when>
 				<c:otherwise>
-				최초등록:${text.FIRSTMODIFIEDDATE  }<br />
-				수정시각:${text.LASTMODIFIEDDATE  }<br />
+				최초등록:${o.FIRSTMODIFIEDDATE  }<br />
+				수정시각:${o.LASTMODIFIEDDATE  }<br />
 				</c:otherwise>
 			</c:choose>
 			<br />
 			<br />
-			<form action="/commentDelete">
-				<input type="hidden" value="${o.COMMENTS_UUID }"
-					name="comments_UUID"> <input type="hidden"
-					value="${o.UUID }" name="UUID">
-				<button type="submit">삭제</button>
-				<br>
-			</form>
+			<c:if test="${o.USER_ID==id}">
+				<form action="/commentDelete">
+					<input type="hidden" value="${o.COMMENTS_UUID }"
+						name="comments_UUID"> <input type="hidden"
+						value="${o.UUID }" name="UUID">
+					<button type="submit">삭제</button>
+					<br>
+				</form>
+			</c:if>
 		</c:forEach>
 	</c:if>
-
 
 	<form action="/commentRegister">
 		<input type="hidden" value="${text.UUID }" name="UUID"> <input
