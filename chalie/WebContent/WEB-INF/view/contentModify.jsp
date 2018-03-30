@@ -15,7 +15,7 @@
 		제목 :<input type="text" name="title" value="${text.TITLE }"><br>
 		<input type="hidden" name="UUID" value="${text.UUID}">
 		<br>
-		<br>
+		<br>게시판:<input type="text" name="board" value="${text.BOARD }"> 25자 미만.<br>
 		<br> 본문 :
 		<textarea rows="20" cols="120" style="resize: none;" name="text"> ${text.TEXT }</textarea>
 		<br>
@@ -34,7 +34,7 @@
 		</c:if>
 		태그 : <input type="text" name="tags" value="${text.TAGS }" ><br>
 		#으로 구분
-		<button type="button" id="submit">확인</button>
+		<button type="submit">확인</button>
 	</form>
 </body>
 <script >

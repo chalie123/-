@@ -12,6 +12,7 @@
 		제목 :<input type="text" name="title"><br>
 		<br>
 		<br>
+		게시판:<input type="text" name="board"> 25자 미만.<br>
 		<br> 본문 :
 		<textarea rows="20" cols="120" style="resize: none;" name="text"></textarea>
 		<br>
@@ -25,7 +26,6 @@
 <script>
 $("#photo").on("change",function() {
 	var files = this.files;
-	
 	$("#photo_preview").html("");
 	for (var i = 0; i < files.length; i++) {
 		if(!files[i].type.startsWith("image")){

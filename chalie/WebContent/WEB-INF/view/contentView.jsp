@@ -23,6 +23,7 @@
 		</form>
 	</c:if>
 	<br> 제목 ${text.TITLE }
+	<br>게시판 ${text.BOARD }
 	<br /> 아이디${text.USER_ID }
 	<br /> 본문 ${text.TEXT }
 	<br /> 날짜
