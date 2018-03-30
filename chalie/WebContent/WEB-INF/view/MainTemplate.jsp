@@ -2,9 +2,10 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <html lang="en">
 <head>
-<title>찰리 도서관</title>
+<title><tiles:insertAttribute name="title"/></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -127,11 +128,8 @@ footer {
 
 	<div class="container-fluid text-center">
 		<div class="row content">
-			<div class="col-sm-2 sidenav">
-			</div>
 			<div class="col-sm-8 text-left">
-			</div>
-			<div class="col-sm-2 sidenav">
+				<tiles:insertAttribute name="menu"></tiles:insertAttribute>
 			</div>
 		</div>
 	</div>
