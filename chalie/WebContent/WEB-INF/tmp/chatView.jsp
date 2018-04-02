@@ -26,7 +26,6 @@
 				}
 			})
 		})
-
 		function sendMessage() {
 			var text = $("#chat").val();
 			if (text == "") {
