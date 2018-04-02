@@ -1,6 +1,7 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -20,36 +21,40 @@ public class SearchController {
 
 	@Autowired
 	SearchService searchService;
-	
+
 	@RequestMapping("/{arg}")
-	public String SearchHandle(HttpSession session, @PathVariable String path,@RequestParam("arg") String arg) {
-		List<Map> list=new ArrayList<Map>();
-		switch(path) {
+	public String SearchHandle(HttpSession session, @PathVariable String path, @RequestParam("arg") String arg) {
+		if (session.getAttribute("s") == null)
+			session.setAttribute("s", String.valueOf((int) (Math.random() * 100)));
+		List<Map> list = new ArrayList<Map>();
+		Map<String, String> param = new HashMap<>();
+		param.put("arg", arg);
+		switch (path) {
 		case "all":
-			list=searchService.search(arg);
+			list = searchService.search(param);
 			break;
 		case "common":
-			list=searchService.search(arg);
+			param.put("subject", "1");
+			list = searchService.search(param);
 			break;
 		case "kid":
-			list=searchService.search(arg);
+			param.put("subject", "2");
+			list = searchService.search(param);
 			break;
 		case "newcome":
-			list=searchService.search(arg);
+			param.put("date", "");
+			list = searchService.search(param);
 			break;
 		case "recommend":
-			list=searchService.search(arg);
+			param.put("arg", (String) session.getAttribute("s"));
+			list = searchService.search(param);
 			break;
 		case "popular":
-			list=searchService.search(arg);
+			param.put("arg", (String) session.getAttribute("s"));
+			list = searchService.search(param);
 		}
 		session.setAttribute("searchResult", list);
-		
-//		for(Map l : list) {
-//			System.out.println(l.toString());
-//		}
-//		list.clear();
-		
-		return "searchView";
+
+		return "searchResultView";
 	}
 }

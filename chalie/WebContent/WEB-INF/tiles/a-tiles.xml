@@ -11,7 +11,7 @@
 		<put-attribute name="main" value="/WEB-INF/view/main.jsp" />
 	</definition>
 	<!-- 자료검색 -->
-	<definition name="t_search_common" extends="t_base">
+	<definition name="t_search_commonView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="통합검색"/>
@@ -20,7 +20,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_search_nonbook" extends="t_base">
+	<definition name="t_search_nonbookView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="비도서검색"/>
@@ -29,7 +29,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_search_kid" extends="t_base">
+	<definition name="t_search_kidView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="아동도서검색"/>
@@ -38,7 +38,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_search_newcome" extends="t_base">
+	<definition name="t_search_newcomeView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="신착도서검색"/>
@@ -47,7 +47,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_search_recommend" extends="t_base">
+	<definition name="t_search_recommendView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="추천도서"/>
@@ -56,7 +56,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_search_popular" extends="t_base">
+	<definition name="t_search_popularView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="인기도서"/>
@@ -66,7 +66,7 @@
 		</put-attribute>
 	</definition>
 	<!-- 나의서재 -->
-	<definition name="t_account_rental" extends="t_base">
+	<definition name="t_account_rentalView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="대출/연장/예약조회"/>
@@ -75,7 +75,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_account_proposal" extends="t_base">
+	<definition name="t_account_proposalView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="희망도서신청/조회"/>
@@ -84,7 +84,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_account_modify" extends="t_base">
+	<definition name="t_account_modifyView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="개인정보수정/탈퇴"/>
@@ -94,7 +94,7 @@
 		</put-attribute>
 	</definition>
 	<!-- 전자도서관 -->
-	<definition name="t_elib_ebook" extends="t_base">
+	<definition name="t_elib_ebookView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="전자책"/>
@@ -103,7 +103,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_elib_education" extends="t_base">
+	<definition name="t_elib_educationView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="사이버학습"/>
@@ -112,7 +112,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_elib_audiobook" extends="t_base">
+	<definition name="t_elib_audiobookView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="오디오북"/>
@@ -122,7 +122,7 @@
 		</put-attribute>
 	</definition>
 	<!-- 참여마당 -->
-	<definition name="t_community_donation" extends="t_base">
+	<definition name="t_community_donationView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="도서기증"/>
@@ -131,7 +131,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_community_service" extends="t_base">
+	<definition name="t_community_serviceView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="자원봉사신청"/>
@@ -140,7 +140,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_community_review" extends="t_base">
+	<definition name="t_community_reviewView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="한줄감상"/>
@@ -149,7 +149,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_community_suggestion" extends="t_base">
+	<definition name="t_community_suggestionView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="도서관에바란다"/>
@@ -158,7 +158,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_community_group" extends="t_base">
+	<definition name="t_community_groupView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="소모임"/>
@@ -168,7 +168,7 @@
 		</put-attribute>
 	</definition>
 	<!-- 이용안내 -->
-	<definition name="t_guide_notification" extends="t_base">
+	<definition name="t_guide_notificationView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="공지사항"/>
@@ -177,7 +177,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_guide_FAQ" extends="t_base">
+	<definition name="t_guide_FAQView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="자주하는질문"/>
@@ -186,7 +186,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_guide_QNA" extends="t_base">
+	<definition name="t_guide_QNAView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="Q&amp;A(참고봉사)"/>
@@ -195,7 +195,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_guide_rental" extends="t_base">
+	<definition name="t_guide_rentalView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="대출안내"/>
@@ -204,7 +204,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_guide_proposal" extends="t_base">
+	<definition name="t_guide_proposalView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="희망도서신청/조회"/>
@@ -213,7 +213,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_guide_constitution" extends="t_base">
+	<definition name="t_guide_constitutionView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="도서관서비스헌장"/>
@@ -222,7 +222,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_guide_schedule" extends="t_base">
+	<definition name="t_guide_scheduleView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="도서관일정"/>
@@ -232,7 +232,7 @@
 		</put-attribute>
 	</definition>
 	<!-- 도서관소개 -->
-	<definition name="t_info_welcome" extends="t_base">
+	<definition name="t_info_welcomeView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="인사말"/>
@@ -241,7 +241,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_info_history" extends="t_base">
+	<definition name="t_info_historyView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="연혁"/>
@@ -250,7 +250,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_info_organization" extends="t_base">
+	<definition name="t_info_organizationView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="조직도"/>
@@ -259,7 +259,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_info_statistics" extends="t_base">
+	<definition name="t_info_statisticsView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="자료현황"/>
@@ -268,7 +268,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_info_map" extends="t_base">
+	<definition name="t_info_mapView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="찾아오시는길"/>
@@ -278,7 +278,7 @@
 		</put-attribute>
 	</definition>
 	<!-- 관리자메뉴 -->
-	<definition name="t_manage_member" extends="t_base">
+	<definition name="t_manage_memberView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="회원관리"/>
@@ -287,7 +287,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_manage_data" extends="t_base">
+	<definition name="t_manage_dataView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="자료관리"/>
@@ -296,7 +296,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_manage_community" extends="t_base">
+	<definition name="t_manage_communityView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="커뮤니티관리"/>

@@ -40,22 +40,22 @@ public class AccountController {
 
 	@RequestMapping("/createView")
 	public String createView() {
-		return "/createView";
+		return "/account/createView";
 	}
 
 	@RequestMapping("/loginView")
 	public String loginView() {
-		return "/loginView";
+		return "/account/loginView";
 	}
 
 	@RequestMapping("/modifyView")
 	public String modifyView() {
-		return "/modifyView";
+		return "/account/modifyView";
 	}
 
 	@RequestMapping("/deleteView")
 	public String deleteView() {
-		return "/deleteView";
+		return "/account/deleteView";
 	}
 
 	@RequestMapping("/verify/{code}")

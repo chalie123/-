@@ -7,7 +7,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into books values(#{NO},	#{SUBJECT}, #{AUTHOR}, #{EA_ISBN}, #{PUBLISHER}, #{SERIES_NO}, #{PUBLISH_PREDATE}, #{FORM_DETAIL}, #{SERIES_TITLE}, #{PRE_PRICE}, #{TITLE})
 	</insert>
 	<select id="search" resultType="hashmap">
-		select * from books where NO like #{arg} or SUBJECT like #{arg} or AUTHOR like #{arg} or EA_ISBN like #{arg} or PUBLISHER like #{arg} and SERIES_NO like #{arg} or PUBLISH_PREDATE like #{arg} or FORM_DETAIL like #{arg} or SERIES_TITLE like #{arg} or PRE_PRICE like #{arg} or TITLE like #{arg} order by NO asc
+		select * from books where NO like #{arg} or AUTHOR like #{arg} or EA_ISBN like #{arg} or PUBLISHER like #{arg} and SERIES_NO like #{arg} or PUBLISH_PREDATE like #{arg} or FORM_DETAIL like #{arg} or SERIES_TITLE like #{arg} or PRE_PRICE like #{arg} or TITLE like #{arg}
+		<choose>
+			<when test="${subject}!=null">
+				where subject=${subject} order by NO asc
+			</when>
+			<when test="${date}!=null">
+				order by PUBLISH_DATE desc
+			</when>
+			<otherwise>
+				order by NO asc
+			</otherwise>
+		</choose>
 	</select>
 </mapper>
 
