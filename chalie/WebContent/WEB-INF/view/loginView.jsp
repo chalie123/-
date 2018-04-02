@@ -130,7 +130,7 @@ footer {
 				<br/>
 				<br/>
 				<br/>
-				<form action="/account/login">
+				<form action="/account/login" method="post">
 				<div align="center" style="font: bold 13pt/1.3 돋움">EMAIL &nbsp;&nbsp;<input type="text" width="250px" height="250px;" name="email" placeholder="메일주소">
 				</div>
 				<br/>

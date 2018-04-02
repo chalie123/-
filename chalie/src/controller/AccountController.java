@@ -60,38 +60,38 @@ public class AccountController {
 
 	@RequestMapping("/verify/{code}")
 	public String verifyHandle(@PathVariable String code) {
-		boolean rst=AccountService.verify(code);
-		
-		if(rst) {
+		boolean rst = AccountService.verify(code);
+
+		if (rst) {
 			return "index";
-		}else {
+		} else {
 			return "index";
 		}
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@RequestMapping(path = "/overlapCheck", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String OverlapCheckHandle(@RequestParam Map<String, String> param) throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
+	public String OverlapCheckHandle(@RequestParam Map<String, String> param)
+			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		String key = "1234567890123456";
-		if(param.get("email")!=null)
-			param.put("email",AES256.encrypt("email", key));
+		if (param.get("email") != null)
+			param.put("email", AES256.encrypt("email", key));
 		boolean rst = AccountService.overlapCheck(param);
 		if (rst) {
-			Map map=new HashMap();
-			map.put("overlapCheck",true);
+			Map map = new HashMap();
+			map.put("overlapCheck", true);
 			return new Gson().toJson(map);
 		} else {
-			Map map=new HashMap();
-			map.put("overlapCheck",false);
+			Map map = new HashMap();
+			map.put("overlapCheck", false);
 			return new Gson().toJson(map);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/create")
-	public String createHandle(HttpServletRequest request, HttpSession session,
-			@RequestParam Map<String, String> param)
+	public String createHandle(HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) request.getServletContext().getAttribute("key");
 		// ��ȣȭ Ű�� 16�ڸ� ���� ���� String
@@ -154,8 +154,7 @@ public class AccountController {
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping("/login")
-	public String loginHandle(HttpServletRequest request, HttpSession session,
-			@RequestParam Map<String, String> param)
+	public String loginHandle(HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) request.getServletContext().getAttribute("key");
 		String key = "1234567890123456";
@@ -165,7 +164,7 @@ public class AccountController {
 		if (rst.length() != 0) {
 			if (request.getServletContext().getAttribute("logons") == null) {
 				Set logons = new HashSet();
-				logons.add(rst.substring(0,rst.length()-1));
+				logons.add(rst.substring(0, rst.length() - 1));
 				request.getServletContext().setAttribute("logons", logons);
 			} else {
 				Set logons = new HashSet();
@@ -173,8 +172,8 @@ public class AccountController {
 				logons.add(rst);
 				request.getServletContext().setAttribute("logons", logons);
 			}
-			session.setAttribute("logon", rst.substring(0, rst.length()-1));
-			if(rst.substring(rst.length()-1,rst.length()).equals("9")) {
+			session.setAttribute("logon", rst.substring(0, rst.length() - 1));
+			if (rst.substring(rst.length() - 1, rst.length()).equals("9")) {
 				session.setAttribute("admin", true);
 			}
 			return "/index";
@@ -182,17 +181,21 @@ public class AccountController {
 			return "/index";
 		}
 	}
-	
+
 	@SuppressWarnings("rawtypes")
 	@RequestMapping("/logout")
 	public String logoutHandle(HttpServletRequest request, HttpSession session) {
-		Set logons = (Set) request.getServletContext().getAttribute("logons");
-		System.out.println();
-		logons.remove(session.getAttribute("logon"));
-		request.getServletContext().setAttribute("logons", logons);
-		AccountService.logout((String) session.getAttribute("logon"));
-		session.removeAttribute("logon");
-		return "/index";
+		try {
+			Set logons = (Set) request.getServletContext().getAttribute("logons");
+			logons.remove(session.getAttribute("logon"));
+			request.getServletContext().setAttribute("logons", logons);
+			AccountService.logout((String) session.getAttribute("logon"));
+			session.removeAttribute("logon");
+			return "/index";
+		} catch (NullPointerException e) {
+			e.printStackTrace();
+			return "/index";
+		}
 	}
 
 	@SuppressWarnings("unchecked")

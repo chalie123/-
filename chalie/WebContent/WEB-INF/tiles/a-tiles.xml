@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+	PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- 인덱스는 히든 (인덱스에서는 사이드바를 안불러옴 -->
+	<definition name="t_base" template="/WEB-INF/view/base.jsp">
+		<put-attribute name="title" value="메인타이틀" />
+	</definition>
+	<definition name="t_index" extends="t_base">
+		<put-attribute name="main" value="/WEB-INF/view/main.jsp" />
+	</definition>
+	<!-- 섀시는 인덱스를 상속받아서 생성 (사이드바 삽입용) -->
+	<definition name="t_view1-1" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="${view}"/>
+				<put-attribute name="side" value="/WEB-INF/view/side1.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/view1-1.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</tiles-definitions>
