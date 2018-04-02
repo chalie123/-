@@ -8,9 +8,6 @@ public class WordReferenceController {
 	
 	@RequestMapping("/word")
 	public String wordHandle() {
-		
-		
 		return"word";
 	}
-	
 }

@@ -158,7 +158,6 @@ public class AccountController {
 			@RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) request.getServletContext().getAttribute("key");
-		// ��ȣȭ Ű�� 16�ڸ� ���� ���� String
 		String key = "1234567890123456";
 		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
