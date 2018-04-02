@@ -5,7 +5,7 @@
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <html lang="en">
 <head>
-<title><tiles:insertAttribute name="title"/></title>
+<title><tiles:insertAttribute name="title" /></title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -29,7 +29,7 @@
 /* Set gray background color and 100% height */
 .sidenav {
 	padding-top: 20px;
-	background-color: #f1f1f1;
+	background-color: #555;
 	height: 100%;
 }
 
@@ -53,9 +53,8 @@ footer {
 </style>
 </head>
 <body>
-	<a href="/">
-				<b> <img src="/image/logo.gif" alt="도서관" />
-				</b>
+	<a href="/"> <b> <img src="/image/logo.gif" alt="도서관" />
+	</b>
 	</a>
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
@@ -128,6 +127,9 @@ footer {
 
 	<div class="container-fluid text-center">
 		<div class="row content">
+			<div class="col-sm-2 sidenav">
+				<tiles:insertAttribute name="side"></tiles:insertAttribute>
+			</div>
 			<div class="col-sm-8 text-left">
 				<tiles:insertAttribute name="menu"></tiles:insertAttribute>
 			</div>

@@ -16,4 +16,9 @@ public class TestController {
 		
 		return "MainTemplate";
 	}
+	@RequestMapping("/t_menu1-1")
+	public String tinHandle() {
+		
+		return "t_menu1-1";
+	}
 }

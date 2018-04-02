@@ -1,12 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+	<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	<script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<html>
-<head>
-<title>Insert title here</title>
-</head>
-<body>
 	<form action="contentWrite" method="post"
 		enctype="multipart/form-data">
 		제목 :<input type="text" name="title"><br>
@@ -22,7 +17,6 @@
 		태그 : <input type="text" name="tags"><br> #으로 구분
 		<button type="submit">확인</button>
 	</form>
-</body>
 <script>
 $("#photo").on("change",function() {
 	var files = this.files;
@@ -43,4 +37,3 @@ $("#photo").on("change",function() {
 	}
 });
 </script>
-</html>
