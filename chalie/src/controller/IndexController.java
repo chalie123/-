@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class IndexController {
 
+	@RequestMapping({"/index","/"})
+	public String indexHandle() {
+		return "t_index";
+	}
 	@RequestMapping("/search/{path}")
 	public String searchHandle(@PathVariable String path) {
 		String p="t_search_"+path;

@@ -66,6 +66,15 @@
 		</put-attribute>
 	</definition>
 	<!-- 나의서재 -->
+	<definition name="t_account_createView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="대출/연장/예약조회"/>
+				<put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/accountCreateView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
 	<definition name="t_account_rentalView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">

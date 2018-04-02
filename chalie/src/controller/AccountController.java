@@ -3,7 +3,6 @@ package controller;
 import java.io.UnsupportedEncodingException;
 import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -25,6 +24,7 @@ import com.google.gson.Gson;
 
 import Service.AES256Service;
 import Service.AccountService;
+import Service.MailService;
 import Service.SHA256Service;
 
 @Controller
@@ -37,31 +37,12 @@ public class AccountController {
 	AES256Service AES256;
 	@Autowired
 	AccountService AccountService;
-
-	@RequestMapping("/createView")
-	public String createView() {
-		return "/account/createView";
-	}
-
-	@RequestMapping("/loginView")
-	public String loginView() {
-		return "/account/loginView";
-	}
-
-	@RequestMapping("/modifyView")
-	public String modifyView() {
-		return "/account/modifyView";
-	}
-
-	@RequestMapping("/deleteView")
-	public String deleteView() {
-		return "/account/deleteView";
-	}
-
+	@Autowired
+	MailService MailService;
+	
 	@RequestMapping("/verify/{code}")
 	public String verifyHandle(@PathVariable String code) {
 		boolean rst = AccountService.verify(code);
-
 		if (rst) {
 			return "index";
 		} else {
@@ -96,6 +77,9 @@ public class AccountController {
 		// String key=(String) request.getServletContext().getAttribute("key");
 		// ��ȣȭ Ű�� 16�ڸ� ���� ���� String
 		String key = "1234567890123456";
+		String email=param.get("email");
+		String phone=param.get("phone");
+		String address=param.get("address");
 		param.put("serial", UUID.randomUUID().toString());
 		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
@@ -120,6 +104,10 @@ public class AccountController {
 			request.getServletContext().setAttribute("logons", logons);
 		}
 		session.setAttribute("logon", rst);
+		session.setAttribute("email", email);
+		session.setAttribute("phone", phone);
+		session.setAttribute("address", address);
+		MailService.sendVerifyMail(email, param.get("email"));
 		if (rst.length() != 0) {
 			return "/index";
 		} else {
@@ -160,22 +148,22 @@ public class AccountController {
 		String key = "1234567890123456";
 		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
-		String rst = AccountService.login(param);
-		if (rst.length() != 0) {
+		List<Map> rst = AccountService.login(param);
+		if (rst.size() != 0) {
 			if (request.getServletContext().getAttribute("logons") == null) {
 				Set logons = new HashSet();
-				logons.add(rst.substring(0, rst.length() - 1));
+				logons.add(rst.get(0).get("NAME"));
 				request.getServletContext().setAttribute("logons", logons);
 			} else {
 				Set logons = new HashSet();
 				logons = (Set) request.getServletContext().getAttribute("logons");
-				logons.add(rst);
+				logons.add(rst.get(0).get("NAME"));
 				request.getServletContext().setAttribute("logons", logons);
 			}
-			session.setAttribute("logon", rst.substring(0, rst.length() - 1));
-			if (rst.substring(rst.length() - 1, rst.length()).equals("9")) {
-				session.setAttribute("admin", true);
-			}
+			session.setAttribute("logon", rst.get(0).get("NAME"));
+			session.setAttribute("phone", rst.get(0).get("PHONE"));
+			session.setAttribute("address", rst.get(0).get("ADDRESS"));
+			session.setAttribute("rank", rst.get(0).get("VERIFY_EMAIL"));
 			return "/index";
 		} else {
 			return "/index";
