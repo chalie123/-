@@ -51,7 +51,10 @@ footer {
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/CK
 	<header>
 		<div align="left">
 			<h1>

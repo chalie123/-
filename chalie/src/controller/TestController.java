@@ -13,7 +13,6 @@ public class TestController {
 		
 		return "chatView";
 	}
-
 	@RequestMapping("/test/tiles/{path}")
 	public String testHandle01(@PathVariable String path,Model model) {
 		String side="side"+path.substring(0,1)+".jsp";
@@ -24,16 +23,5 @@ public class TestController {
 		model.addAttribute("view",view);
 		return "t_view"+path;
 	}
-	@RequestMapping("/test/base")
-	public String testHandle02() {
-		return "t_base";
-	}
-	@RequestMapping("/test/chasses")
-	public String testHandle03() {
-		return "t_chasses";
-	}
-	@RequestMapping("/test/index")
-	public String testHandle04() {
-		return "t_index";
-	}
+
 }
