@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -26,13 +24,14 @@ public class WebSocketController extends TextWebSocketHandler{
 	} 
 	
 	public void afterConnectionEstablished(WebSocketSession wsSession) throws Exception {
+		String name=(String) wsSession.getAttributes().get("logon");
 		for(WebSocketSession ws : wsSessions.keySet()) {
 			Map map=new HashMap();
-			map.put("name", "name");
+			map.put("name", name);
 			map.put("text", "님이 접속하셨습니다.");
 			ws.sendMessage(new TextMessage(new Gson().toJson(map)));
 		}
-		wsSessions.put(wsSession, "name");
+		wsSessions.put(wsSession, name);
 		wsSessions.values();
 		Map map=new HashMap();
 		map.put("logons", wsSessions.values());
@@ -57,7 +56,7 @@ public class WebSocketController extends TextWebSocketHandler{
 		wsSessions.remove(wsSession);
 		for(WebSocketSession ws : wsSessions.keySet()) {
 			Map map=new HashMap();
-			map.put("name", "name");
+			map.put("name", wsSessions.get(wsSession));
 			map.put("text", "님이 접속을 해제하셨습니다.");
 			ws.sendMessage(new TextMessage(new Gson().toJson(map)));
 		}

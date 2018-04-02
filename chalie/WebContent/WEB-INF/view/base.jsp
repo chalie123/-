@@ -161,7 +161,7 @@ footer {
 	
 	
 	<div class="container-fluid text-center">
-<%-- 		<tiles:insertAttribute name="main" /> --%>
+		<tiles:insertAttribute name="main" />
 	</div>
 	
 	
