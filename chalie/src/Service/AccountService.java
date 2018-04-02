@@ -17,11 +17,15 @@ public class AccountService {
 	SqlSessionTemplate template;
 
 	public boolean verify(String email) {
-		return template.update("lib_account.verify", email)==1;
+		boolean b=template.update("lib_account.verify", email)==1;
+		Map map=new HashMap();
+		List<Map> list=template.selectList("lib_account.login", map);
+		String name=(String) list.get(0).get("NAME");
+		System.out.println("[SYSTEM]<Account> : "+name+" verified email.");
+		return b;
 	}
 	
 	public boolean overlapCheck(Map<String, String> param) {
-		System.out.println(param.get("name"));
 		Map map=new HashMap();
 		map=template.selectOne("lib_account.overlapCheck", param);
 		if(map==null) {
@@ -44,14 +48,14 @@ public class AccountService {
 		}
 	}
 
-	public String login(Map<String, String> param) {
+	public List login(Map<String, String> param) {
 		List<Map> list = template.selectList("lib_account.login", param);
 		if (list.size() == 1) {
 			System.out.println("[SYSTEM]<Account> : " + list.get(0).get("NAME") + " Logged In.");
-			return list.get(0).get("NAME")+list.get(0).get("VERIFY_EMAIL").toString();
+			return list;
 		} else {
 			System.out.println("[SYSTEM]<Account> : Login attempt with name = " + param.get("name") + " failed.");
-			return "";
+			return list;
 		}
 	}
 	

@@ -127,15 +127,17 @@ footer {
 								<li><a href="/info/statistics">자료현황</a></li>
 								<li><a href="/info/map">찾아오시는길</a></li>
 							</ul></li>
-						<c:when test="${admin!=null }">
-							<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">관리자메뉴 <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/manage/member">회원관리</a></li>
-								<li><a href="/manage/data">자료관리</a></li>
-								<li><a href="/manage/community">커뮤니티관리</a></li>
-							</ul></li>
-						</c:when>
+						<c:choose>
+							<c:when test="${rank==9 }">
+								<li class="dropdown"><a class="dropdown-toggle"
+								data-toggle="dropdown" href="#">관리자메뉴 <span class="caret"></span></a>
+								<ul class="dropdown-menu">
+									<li><a href="/manage/member">회원관리</a></li>
+									<li><a href="/manage/data">자료관리</a></li>
+									<li><a href="/manage/community">커뮤니티관리</a></li>
+								</ul></li>
+							</c:when>
+						</c:choose>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/"><span class="glyphicon glyphicon-log-in"></span>
