@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions 
+	PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- 인덱스 헤더, 푸터 포함 (인덱스에서는 사이드바를 안불러옴) -->
+	<definition name="t_base" template="/WEB-INF/view/base.jsp">
+		<put-attribute name="title" value="찰리도서관" />
+	</definition>
+	<!-- 섀시는 인덱스를 상속받아서 생성 (사이드바 삽입용) -->
+	<definition name="t_index" extends="t_base">
+		<put-attribute name="main" value="/WEB-INF/view/main.jsp" />
+	</definition>
+	<!-- 자료검색 -->
+	<definition name="t_search_commonView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="통합검색"/>
+				<put-attribute name="side" value="/WEB-INF/view/searchSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/searchCommonView.jsp" />
+			</definition>							
+		</put-attribute>							
+	</definition>								
+	<definition name="t_search_nonbookView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="비도서검색"/>
+				<put-attribute name="side" value="/WEB-INF/view/searchSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/searchNonbookView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_search_kidView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="아동도서검색"/>
+				<put-attribute name="side" value="/WEB-INF/view/searchSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/searchKidView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_search_newcomeView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="신착도서검색"/>
+				<put-attribute name="side" value="/WEB-INF/view/searchSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/searchNewcomeView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_search_recommendView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="추천도서"/>
+				<put-attribute name="side" value="/WEB-INF/view/searchSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/searchRecommendView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_search_popularView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="인기도서"/>
+				<put-attribute name="side" value="/WEB-INF/view/searchSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/searchPopularView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<!-- 나의서재 -->
+	<definition name="t_account_rentalView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="대출/연장/예약조회"/>
+				<put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/accountRentalView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_account_proposalView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="희망도서신청/조회"/>
+				<put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/accountProposalView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_account_modifyView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="개인정보수정/탈퇴"/>
+				<put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/accountModifyView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_account_createView" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="회원가입"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountCreateView.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+   <definition name="t_account_loginView" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="로그인"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountLoginView.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+	<!-- 전자도서관-->
+	<definition name="t_elib_ebookView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="전자책"/>
+				<put-attribute name="side" value="/WEB-INF/view/elibSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/elibEbookView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_elib_educationView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="사이버학습"/>
+				<put-attribute name="side" value="/WEB-INF/view/elibSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/elibEducationView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_elib_audiobookView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="오디오북"/>
+				<put-attribute name="side" value="/WEB-INF/view/elibSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/elibAudiobookView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition> 
+	<!-- 참여마당 -->
+	<definition name="t_community_donationView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="도서기증"/>
+				<put-attribute name="side" value="/WEB-INF/view/communitySide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/communityDonationView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_community_serviceView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="자원봉사신청"/>
+				<put-attribute name="side" value="/WEB-INF/view/communitySide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/communityServiceView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_community_reviewView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="한줄감상"/>
+				<put-attribute name="side" value="/WEB-INF/view/communitySide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/communityReviewView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_community_suggestionView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="도서관에바란다"/>
+				<put-attribute name="side" value="/WEB-INF/view/communitySide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/communitySuggestionView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_community_groupView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="소모임"/>
+				<put-attribute name="side" value="/WEB-INF/view/communitySide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/communityGroupView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<!-- 이용안내 -->
+	<definition name="t_guide_notificationView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="공지사항"/>
+				<put-attribute name="side" value="/WEB-INF/view/guideSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/guideNotificationView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_guide_FAQView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="자주하는질문"/>
+				<put-attribute name="side" value="/WEB-INF/view/guideSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/guideFAQView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_guide_QNAView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="Q&amp;A(참고봉사)"/>
+				<put-attribute name="side" value="/WEB-INF/view/guideSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/guideQNAView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_guide_rentalView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="대출안내"/>
+				<put-attribute name="side" value="/WEB-INF/view/guideSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/guideRentalView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_guide_proposalView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="희망도서신청/조회"/>
+				<put-attribute name="side" value="/WEB-INF/view/guideSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/guideProposalView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_guide_constitutionView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="도서관서비스헌장"/>
+				<put-attribute name="side" value="/WEB-INF/view/guideSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/guideConstitutionView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_guide_scheduleView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="도서관일정"/>
+				<put-attribute name="side" value="/WEB-INF/view/guideSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/guideScheduleView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<!-- 도서관소개 -->
+	<definition name="t_info_welcomeView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="인사말"/>
+				<put-attribute name="side" value="/WEB-INF/view/infoSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/infoWelcomeView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_info_historyView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="연혁"/>
+				<put-attribute name="side" value="/WEB-INF/view/infoSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/infoHistoryView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_info_organizationView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="조직도"/>
+				<put-attribute name="side" value="/WEB-INF/view/infoSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/infoOrganizationView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_info_statisticsView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="자료현황"/>
+				<put-attribute name="side" value="/WEB-INF/view/infoSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/infoStatisticsView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_info_mapView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="찾아오시는길"/>
+				<put-attribute name="side" value="/WEB-INF/view/infoSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/infoMapView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<!-- 관리자메뉴 -->
+	<definition name="t_manage_memberView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="회원관리"/>
+				<put-attribute name="side" value="/WEB-INF/view/manageSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/manageMemberView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_manage_dataView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="자료관리"/>
+				<put-attribute name="side" value="/WEB-INF/view/manageSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/manageDataView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_manage_communityView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="커뮤니티관리"/>
+				<put-attribute name="side" value="/WEB-INF/view/manageSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/manageCommunityView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+</tiles-definitions>

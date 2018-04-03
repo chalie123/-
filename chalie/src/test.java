@@ -21,15 +21,13 @@ public class test {
 //			System.out.println("AES256 : "+AES256.encrypt(a,key));
 //		}
 		
-		// ¾ÏÈ£È­ Å×½ºÆ®
 		String str1="";
 		
-		System.out.println("AES256 : "+str1+" ¡æ "+AES256.encrypt(str1, key));
-		System.out.println("SHA256 : "+str1+" ¡æ "+SHA256.encrypt(str1));
-		// º¹È£È­ Å×½ºÆ®
+		System.out.println("AES256 : "+str1+" ï¿½ï¿½ "+AES256.encrypt(str1, key));
+		System.out.println("SHA256 : "+str1+" ï¿½ï¿½ "+SHA256.encrypt(str1));
 		String str2="";
 		
-		System.out.println("AES256 : "+AES256.decrypt(str2, key)+" ¡ç "+str2);
+		System.out.println("AES256 : "+AES256.decrypt(str2, key)+" ï¿½ï¿½ "+str2);
 				
 		
 	}
