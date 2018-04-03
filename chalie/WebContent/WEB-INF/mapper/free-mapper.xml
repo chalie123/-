@@ -14,6 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="selectText" resultType="HashMap">
 		select * from free_board where UUID = #{UUID}
 	</select>
+	<select id="selectBoard" resultType="HashMap">
+		select * from free_board where board = #{board}
+	</select>
 	<update id="updateViews">
 		update free_board set views =views+1 where UUID = #{UUID}
 	</update>
