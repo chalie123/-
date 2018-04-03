@@ -9,7 +9,7 @@ public class IndexController {
 
 	@RequestMapping({"/index","/"})
 	public String indexHandle() {
-		return "t_index";
+		return "t_index"; 
 	}
 	@RequestMapping("/search/{path}")
 	public String searchHandle(@PathVariable String path) {
