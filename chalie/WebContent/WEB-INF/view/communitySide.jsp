@@ -6,7 +6,7 @@
 	<li><a href="/community/donation">도서기증</a></li>
 	<li><a href="/community/service">자원봉사신청</a></li>
 	<li><a href="/contentIndex?link=t_community_review&board=0">한줄감상</a></li>
-	<li><a href="/contentIndex?link=t_community_review&board=1">도서관에바란다</a></li>
+	<li><a href="/contentIndex?link=t_community_suggestion&board=1">도서관에바란다</a></li>
 	<li><a href="/community/group">소모임</a></li>
 </ul>
 <br>
