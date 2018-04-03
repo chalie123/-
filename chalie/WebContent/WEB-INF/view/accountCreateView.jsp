@@ -9,7 +9,10 @@
 	<script
 		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 	<br /> <br /> <br />
-
+	<font color="red">
+	<p align="center">※이용약관에 전부 동의하지 않으면 넘어가지 않습니다</p>
+	</font>
+	<br/>
 	<div class="container">
 
 		<div class="form-group">
@@ -136,7 +139,7 @@ I-PIN(개인식별번호)	이름,생년월일, 성별,
 
 	
 	<div align="center">
-		<a href = "/account/createView"><button type="button" disabled id="but" >확인</button></a>
+		<a href = "/account/create1View"><button type="button" disabled id="but" >확인</button></a>
 	</div>
 </div>
 <script>

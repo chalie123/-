@@ -86,11 +86,11 @@
 						"method":"post"
 					}).done(function(rst){
 						if(rst.overlapCheck){
-							$("#nameRst").html("사용 가능한 이메일 주소입니다.");
+							$("#nameRst").html("사용 가능한 이름 입니다.");
 							$("#nameRst").css("color","green");
 							nameCheck=true;
 						}else{
-							$("#nameRst").html("사용 불가능한 이메일 주소입니다.");
+							$("#nameRst").html("사용 불가능한 이름 입니다.");
 							$("#nameRst").css("color","red");
 							nameCheck=false;							
 						}

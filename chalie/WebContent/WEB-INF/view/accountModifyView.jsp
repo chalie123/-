@@ -45,6 +45,10 @@
 			<td>등급</td>
 			<td>${rank }</td>
 			<tr />
+			<tr>
+			<td>카드 번호</td>
+			
+			</tr>
 
 		</tbody>
 	</table>

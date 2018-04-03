@@ -181,10 +181,14 @@ public class AccountController {
 			request.getServletContext().setAttribute("logons", logons);
 			AccountService.logout((String) session.getAttribute("logon"));
 			session.removeAttribute("logon");
-			return "/index";
+			session.removeAttribute("email");
+			session.removeAttribute("phone");
+			session.removeAttribute("address");
+			session.removeAttribute("rank");
+			return "redirect:/index";
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			return "/index";
+			return "redirect:/index";
 		}
 	}
 
@@ -195,6 +199,6 @@ public class AccountController {
 		name.put("name", session.getAttribute("logon"));
 		AccountService.delete(name);
 
-		return "redirect:/index";
+		return "/index";
 	}
 }

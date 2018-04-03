@@ -129,7 +129,7 @@ footer {
 								<li><a href="/info/map">찾아오시는길</a></li>
 							</ul></li>
 						<c:choose>
-							<c:when test="${admin!=null }">
+							<c:when test="${rank==9 }">
 								<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#">관리자메뉴 <span class="caret"></span></a>
 								<ul class="dropdown-menu">

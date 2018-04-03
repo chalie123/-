@@ -103,6 +103,17 @@
          </definition>
       </put-attribute>
    </definition>
+   
+   <definition name="t_account_create1View" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="회원가입"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountCreate1View.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+   
    <definition name="t_account_loginView" extends="t_base">
       <put-attribute name="main">
          <definition template="/WEB-INF/view/chasses.jsp">
