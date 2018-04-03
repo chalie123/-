@@ -28,15 +28,15 @@
     <tbody>
       <tr>
         <td>Email</td>
-        <td> </td>
+        <td>${email } </td>
       </tr>
       <tr>
         <td>Address</td>
-        <td>Moe</td>
+        <td>${address }</td>
       </tr>
       <tr>
         <td>Phone</td>
-        <td>Dooley</td>
+        <td>${phone }</td>
       </tr>
       	<td>
       

@@ -157,7 +157,7 @@ footer {
 						</c:when>
 						<c:otherwise>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="/accountManagement"><span
+								<li><a href="/account/modifyView"><span
 										class="glyphicon glyphicon-log-in"></span> ${logon }</a></li>
 							</ul>
 						</c:otherwise>

@@ -157,7 +157,7 @@ public class AccountController {
 			if (rst.substring(rst.length() - 1, rst.length()).equals("9")) {
 				session.setAttribute("admin", true);
 			}
-			return "/index";
+			return "/";
 		} else {
 			return "/index";
 		}
