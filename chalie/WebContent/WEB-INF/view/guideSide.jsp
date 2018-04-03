@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <ul class="nav nav-pills nav-stacked">
-	<li><a href="/guide/notification">이용안내</a></li>
 	<li><a href="/contentIndex?link=t_guide_notification&board=2">공지사항</a></li>
 	<li><a href="/contentIndex?link=t_guide_FAQ&board=3">자주하는질문</a></li>
 	<li><a href="/contentIndex?link=t_guide_QNA&board=4">Q&A(참고봉사)</a></li>

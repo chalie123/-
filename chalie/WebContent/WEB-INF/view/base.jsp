@@ -104,18 +104,18 @@ footer {
 							<ul class="dropdown-menu">
 								<li><a href="/community/donation">도서기증</a></li>
 								<li><a href="/community/service">자원봉사신청</a></li>
-								<li><a href="/community/review">한줄감상</a></li>
-								<li><a href="/community/suggestion">도서관에바란다</a></li>
+								<li><a href="/contentIndex?link=t_community_review&board=0">한줄감상</a></li>
+								<li><a href="/contentIndex?link=t_community_suggestion&board=1">도서관에바란다</a></li>
 								<li><a href="/community/group">소모임</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">이용안내 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/guide/notification">공지사항</a></li>
-								<li><a href="/guide/FAQ">자주하는질문</a></li>
-								<li><a href="/guide/QNA">Q&A(참고봉사)</a></li>
+								<li><a href="/contentIndex?link=t_guide_notification&board=2">공지사항</a></li>
+								<li><a href="/contentIndex?link=t_guide_FAQ&board=3">자주하는질문</a></li>
+								<li><a href="/contentIndex?link=t_guide_QNA&board=4">Q&A(참고봉사)</a></li>
 								<li><a href="/guide/rental">대출안내</a></li>
-								<li><a href="/guide/proposal">희망도서신청/조회</a></li>
+								<li><a href="/contentIndex?link=t_guide_proposal&board=5">희망도서신청/조회</a></li>
 								<li><a href="/guide/constitution">도서관서비스헌장</a></li>
 								<li><a href="/guide/schedule">도서관일정</a></li>
 							</ul></li>

@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <ul class="nav nav-pills nav-stacked">
-<li><a href="/community/donation">참여마당</a></li>
 	<li><a href="/community/donation">도서기증</a></li>
 	<li><a href="/community/service">자원봉사신청</a></li>
 	<li><a href="/contentIndex?link=t_community_review&board=0">한줄감상</a></li>

@@ -212,7 +212,7 @@
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="도서관에바란다" />
 				<put-attribute name="side" value="/WEB-INF/view/communitySide.jsp" />
-				<put-attribute name="body" value="/WEB-INF/view/contentView.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/contentIndex.jsp" />
 			</definition>
 		</put-attribute>
 	</definition>
@@ -261,7 +261,7 @@
 				<put-attribute name="title" value="공지사항" />
 				<put-attribute name="side" value="/WEB-INF/view/guideSide.jsp" />
 				<put-attribute name="body"
-					value="/WEB-INF/view/contentView.jsp" />
+					value="/WEB-INF/view/contentIndex.jsp" />
 			</definition>
 		</put-attribute>
 	</definition>
@@ -387,7 +387,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_guide_proposalView" extends="t_base">
+	<definition name="t_guide_proposalWriteView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="희망도서신청/조회" />
@@ -396,7 +396,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_guide_proposalView" extends="t_base">
+	<definition name="t_guide_proposalModifyView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="희망도서신청/조회" />
@@ -405,7 +405,7 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<definition name="t_guide_proposalView" extends="t_base">
+	<definition name="t_guide_proposalContentView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
 				<put-attribute name="title" value="희망도서신청/조회" />

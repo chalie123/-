@@ -35,7 +35,7 @@
 						${i }&nbsp;
 						</c:when>
 			<c:otherwise>
-				<a href="/contentView?index=${i-1 }&link=${link}&board=${board}">${i }</a>&nbsp;
+				<a href="/contentIndex?index=${i-1 }&link=${link}&board=${board}">${i }</a>&nbsp;
 						</c:otherwise>
 		</c:choose>
 	</c:forEach>
