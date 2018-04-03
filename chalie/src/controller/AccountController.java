@@ -145,6 +145,7 @@ public class AccountController {
 	public String loginHandle(HttpServletRequest request, HttpSession session, @RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		// String key=(String) request.getServletContext().getAttribute("key");
+		// ��ȣȭ Ű�� 16�ڸ� ���� ���� String
 		String key = "1234567890123456";
 		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
@@ -165,8 +166,9 @@ public class AccountController {
 			session.setAttribute("address", rst.get(0).get("ADDRESS"));
 			session.setAttribute("rank", rst.get(0).get("VERIFY_EMAIL"));
 			return "/index";
+
 		} else {
-			return "/index";
+			return "redirect:/index";
 		}
 	}
 
@@ -179,10 +181,14 @@ public class AccountController {
 			request.getServletContext().setAttribute("logons", logons);
 			AccountService.logout((String) session.getAttribute("logon"));
 			session.removeAttribute("logon");
-			return "/index";
+			session.removeAttribute("email");
+			session.removeAttribute("phone");
+			session.removeAttribute("address");
+			session.removeAttribute("rank");
+			return "redirect:/index";
 		} catch (NullPointerException e) {
 			e.printStackTrace();
-			return "/index";
+			return "redirect:/index";
 		}
 	}
 

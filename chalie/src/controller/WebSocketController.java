@@ -15,6 +15,7 @@ import com.google.gson.Gson;
 
 @Controller("ws")
 public class WebSocketController extends TextWebSocketHandler{
+
 	Map<WebSocketSession, String> wsSessions;
 	@PostConstruct 
 	public void init() {

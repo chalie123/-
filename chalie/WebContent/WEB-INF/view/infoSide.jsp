@@ -7,5 +7,6 @@
 	<li><a href="/info/organizationView">조직도</a></li>
 	<li><a href="/info/statisticsView">자료현황</a></li>
 	<li><a href="/info/mapView">찾아오시는 길</a></li>
+
 </ul>
 <br>

@@ -28,14 +28,14 @@
 		</websocket:handshake-interceptors>
 	</websocket:handlers>
 	   <!-- view setting -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/view/" />
-		<property name="suffix" value=".jsp" />
-		<property name="order" value="2"></property>
-	</bean>
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 		<property name="order" value="1"></property>
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/view" />
+		<property name="suffix" value=".jsp" />
+		<property name="order" value="2"></property>
 	</bean>
 	<!-- tiles setting-->
 	<bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">

@@ -9,6 +9,7 @@
 	<!-- 섀시는 인덱스를 상속받아서 생성 (사이드바 삽입용) -->
 	<definition name="t_index" extends="t_base">
 		<put-attribute name="main" value="/WEB-INF/view/main.jsp" />
+	
 	</definition>
 	<!-- 자료검색 -->
 	<definition name="t_search_allView" extends="t_base">
@@ -120,7 +121,37 @@
 			</definition>
 		</put-attribute>
 	</definition>
-	<!-- 전자도서관 -->
+
+	<definition name="t_account_createView" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="회원가입"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountCreateView.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+   
+   <definition name="t_account_create1View" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="회원가입"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountCreate1View.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+   
+   <definition name="t_account_loginView" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="로그인"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountLoginView.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+	<!-- 전자도서관-->
 	<definition name="t_elib_ebookView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">

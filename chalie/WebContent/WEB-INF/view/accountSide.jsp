@@ -8,5 +8,6 @@
 	<li><a href="/account/deleteView">회원탈퇴</a></li>
 	<li><a href="/account/createView">회원가입</a></li>
 	<li><a href="/account/loginView">로그인</a></li>
+
 </ul>
 <br>

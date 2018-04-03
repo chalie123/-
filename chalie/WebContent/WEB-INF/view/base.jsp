@@ -144,10 +144,14 @@ footer {
 						<li><a href="/"><span class="glyphicon glyphicon-log-in"></span>
 								홈</a></li>
 					</ul>
+					<c:choose>
+					<c:when test="${logon==null }">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="/account/createView"><span
 								class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
 					</ul>
+					</c:when>
+					</c:choose>
 					<c:choose>
 						<c:when test="${logon==null }">
 							<ul class="nav navbar-nav navbar-right">
@@ -157,7 +161,7 @@ footer {
 						</c:when>
 						<c:otherwise>
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="/accountManagement"><span
+								<li><a href="/account/modifyView"><span
 										class="glyphicon glyphicon-log-in"></span> ${logon }</a></li>
 							</ul>
 						</c:otherwise>
