@@ -9,6 +9,7 @@ public class IndexController {
 
    @RequestMapping({"/index","/"})
    public String indexHandle() {
+	   System.out.println("index");
       return "t_index";
    }
    @RequestMapping("/search/{path}")
@@ -19,7 +20,6 @@ public class IndexController {
    @RequestMapping("/account/{path}")
    public String accountHandle(@PathVariable String path) {
       String p="t_account_"+path;
-      System.out.println(p);
       return p;
    }
    @RequestMapping("/elib/{path}")

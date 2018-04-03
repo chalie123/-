@@ -162,12 +162,13 @@ public class AccountController {
 				request.getServletContext().setAttribute("logons", logons);
 			}
 			session.setAttribute("logon", rst.get(0).get("NAME"));
-			session.setAttribute("phone", rst.get(0).get("PHONE"));
-			session.setAttribute("address", rst.get(0).get("ADDRESS"));
+			session.setAttribute("email", AES256.decrypt((String) rst.get(0).get("EMAIL"), key));
+			session.setAttribute("phone", AES256.decrypt((String) rst.get(0).get("PHONE"), key));
+			session.setAttribute("address", AES256.decrypt((String) rst.get(0).get("ADDRESS"), key));
 			session.setAttribute("rank", rst.get(0).get("VERIFY_EMAIL"));
-			return "/index";
+			return "redirect:/index";
 		} else {
-			return "/index";
+			return "redirect:/index";
 		}
 	}
 
@@ -194,6 +195,6 @@ public class AccountController {
 		name.put("name", session.getAttribute("logon"));
 		AccountService.delete(name);
 
-		return "/index";
+		return "redirect:/index";
 	}
 }
