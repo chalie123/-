@@ -3,8 +3,8 @@
     <br>
     <br>
     <br>
-<img src="/image/constition1.png">
-<img src="/image/constition2.png">
+<img src="/image/constitution1.png">
+<img src="/image/constitution2.png">
  <br>
     <br>
     <br>

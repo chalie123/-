@@ -3,8 +3,9 @@
     <br>
     <br>
     <br>
-<img src="/image/constition1.png">
-<img src="/image/constition2.png">
+<img src="/image/loanInfo1.png">
+<img src="/image/loanInfo2.png">
+<img src="/image/loanInfo3.png">
  <br>
     <br>
     <br>

@@ -36,14 +36,14 @@ public class BoardController {
 	// 게시물 목록에 세팅 처리 메서드
 	@RequestMapping("/contentIndex")
 	public String indexViewController(@RequestParam(required = false, name = "key") String key,
-			@RequestParam("board") String board, @RequestParam(required = false, name = "index") Integer index,
-			Model mav, @RequestParam("link") String link) {
+			@RequestParam(required = true, name = "board") String board,
+			@RequestParam(required = false, name = "index") Integer index, Model mav,
+			@RequestParam(required = true, name = "link") String link) {
 		Map param = new HashMap<String, String>();
 		if (key != null)
 			param.put("key", key);
 		if (index == null)
 			index = 0;
-
 		param.put("board", board);
 		List<Map> freeBoardList = freeBoardService.BoardService(param);
 		// 20개만 페이지에 넘김.
@@ -73,7 +73,8 @@ public class BoardController {
 	// 게시물 본문 보기 처리 메서드
 	@RequestMapping("/contentView")
 	public String textViewController(@RequestParam Map<String, String> param, Model mav,
-			@RequestParam("link") String link,@RequestParam("board") String board) {
+			@RequestParam(required = true, name = "link") String link,
+			@RequestParam(required = true, name = "board") String board) {
 		mav.addAttribute("text", freeBoardService.freeBoardService(param).get(0));
 		mav.addAttribute("comments", commentService.commentService(param));
 		mav.addAttribute("files", uploadService.uploadSelectService(param));
@@ -85,7 +86,8 @@ public class BoardController {
 	// 댓글 달기 처리 메서드
 	@RequestMapping("/commentRegister")
 	public String commentRegisterController(@RequestParam Map<String, String> param, HttpSession session, Model mav,
-			@RequestParam("link") String link,@RequestParam("board") String board) {
+			@RequestParam(required = true, name = "link") String link,
+			@RequestParam(required = true, name = "board") String board) {
 		// 아이디 비로그인시 등록 x
 		if (session.getAttribute("id") == null) {
 			// 로그인 안됐으니 로그인 창으로 보넨다.
@@ -109,7 +111,9 @@ public class BoardController {
 	}
 
 	@RequestMapping("/contentWriteView")
-	public String writeController(HttpSession session, Model mav, @RequestParam("link") String link,@RequestParam("board") String board) {
+	public String writeController(HttpSession session, Model mav,
+			@RequestParam(required = true, name = "link") String link,
+			@RequestParam(required = true, name = "board") String board) {
 		if (session.getAttribute("id") == null) {
 			// 로그인이 안됐으니 로그인 창으로 보넨다.
 			return "";
@@ -122,8 +126,9 @@ public class BoardController {
 
 	@RequestMapping("/contentWrite")
 	public String tmpController(@RequestParam Map<String, String> param, HttpSession session, HttpServletRequest hsr,
-			@RequestParam(name = "other") MultipartFile[] other, Model mav, @RequestParam("link") String link,
-			@RequestParam("board") String board) {
+			@RequestParam(name = "other") MultipartFile[] other, Model mav,
+			@RequestParam(required = true, name = "link") String link,
+			@RequestParam(required = true, name = "board") String board) {
 		String uuid;
 		if (session.getAttribute("id") == null) {
 			// 로그인 안됐으니 로그인 창으로 보넨다.
@@ -169,7 +174,8 @@ public class BoardController {
 	// 작성글 삭제 혹은 수정 uri로 보넴
 	@RequestMapping("/contentModify")
 	public String modifyController(@RequestParam Map<String, String> param, Model mav,
-			@RequestParam("link") String link, @RequestParam("board") String board) {
+			@RequestParam(required = true, name = "link") String link,
+			@RequestParam(required = true, name = "board") String board) {
 		if (param.get("delete") != null) {
 			// 삭제 메서드 작동
 			param.remove("delete");
@@ -177,7 +183,7 @@ public class BoardController {
 			uploadService.uploadDeleteService(param);
 			freeBoardService.freeBoardDeleteService(param);
 			// 서버 컴퓨터에도 데이터 삭제 추가
-			return "redirect:/contentIndex?link="+link+"&board="+board;
+			return "redirect:/contentIndex?link=" + link + "&board=" + board;
 		}
 		param.remove("modify");
 		mav.addAttribute("board", board);
@@ -190,7 +196,8 @@ public class BoardController {
 
 	@RequestMapping("/contentRewrite")
 	public String modifyContentController(@RequestParam Map<String, String> param, HttpSession session, Model mav,
-			@RequestParam("board") String board, @RequestParam("link") String link, HttpServletRequest hsr,
+			@RequestParam(required = true, name = "board") String board,
+			@RequestParam(required = true, name = "link") String link, HttpServletRequest hsr,
 			@RequestParam(name = "other") MultipartFile[] other,
 			@RequestParam(name = "deleteFile", required = false) String[] deleteFile) {
 		ServletContext ctx = hsr.getServletContext();
@@ -240,7 +247,8 @@ public class BoardController {
 	// 댓글 삭제 컨트롤러
 	@RequestMapping("/commentDelete")
 	public String commentDeleteController(@RequestParam Map<String, String> param, Model mav,
-			@RequestParam("link") String link, @RequestParam("board") String board) {
+			@RequestParam(required = true, name = "link") String link,
+			@RequestParam(required = true, name = "board") String board) {
 		// 댓글 삭제 메서드 작동
 		commentService.oneCommentDeleteService(param);
 		mav.addAttribute("text", freeBoardService.freeBoardService(param).get(0));
