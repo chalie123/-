@@ -8,6 +8,11 @@
 	<li><a href="/account/modify">개인정보수정</a></li>
 	<li><a href="/account/delete">회원탈퇴</a></li>
 	<li><a href="/account/create">회원가입</a></li>
+	
+	<c:choose>
+	<c:when test="${logon==null }">
 	<li><a href="/account/login">로그인</a></li>
+	</c:when>
+	</c:choose>
 </ul>
 <br>

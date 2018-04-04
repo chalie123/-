@@ -123,6 +123,18 @@
          </definition>
       </put-attribute>
    </definition>
+   
+   <definition name="t_account_loginfailView" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="로그인실패"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountLoginfailView.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+   
+   
 	<!-- 전자도서관-->
 	<definition name="t_elib_ebookView" extends="t_base">
 		<put-attribute name="main">

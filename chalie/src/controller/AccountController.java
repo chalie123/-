@@ -169,7 +169,7 @@ public class AccountController {
 			session.setAttribute("rank", rst.get(0).get("VERIFY_EMAIL"));
 			return "redirect:/index";
 		} else {
-			return "redirect:/index";
+			return "/account/loginfailView";
 		}
 	}
 
