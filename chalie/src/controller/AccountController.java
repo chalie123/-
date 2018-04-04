@@ -107,11 +107,12 @@ public class AccountController {
 		session.setAttribute("email", email);
 		session.setAttribute("phone", phone);
 		session.setAttribute("address", address);
+		session.setAttribute("rank", "0");
 		MailService.sendVerifyMail(email, param.get("email"));
 		if (rst.length() != 0) {
-			return "/index";
+			return "redirect:/index";
 		} else {
-			return "/index";
+			return "redirect:/index";
 		}
 	}
 
