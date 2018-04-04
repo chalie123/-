@@ -54,7 +54,7 @@ public class AccountService {
 			System.out.println("[SYSTEM]<Account> : " + list.get(0).get("NAME") + " Logged In.");
 			return list;
 		} else {
-			System.out.println("[SYSTEM]<Account> : Login attempt with name = " + param.get("name") + " failed.");
+			System.out.println("[SYSTEM]<Account> : Login attempt with email = " + param.get("emailRaw") + " failed.");
 			return list;
 		}
 	}

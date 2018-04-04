@@ -8,7 +8,7 @@
 <div class="container">
   <h2>회원가입</h2>
   <p>양식에 맞게 작성바랍니다.</p>
-  <form>
+  <form action="/account/create">
     <div class="form-group">
       <label for="usr">Mail:</label>
       <input type="text" class="form-control" id="emailVal" name="email"> <button type="button" id="emailOverlap">중복확인</button><span id="emailRst"></span>

@@ -52,7 +52,7 @@
 
 		</tbody>
 	</table>
-	<form action="/acccount/delete">
+	<form action="/account/delete">
 	<div align="center"><button type="submit" name="delete">회원탈퇴</button></div>
 	</form>
 </div>
