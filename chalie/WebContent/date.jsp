@@ -40,3 +40,23 @@ input, button {
 	</table>
 </form>
 <hr />
+<script>
+	$("#submit").on("click", function send() {
+		$.ajax("http://${pageContext.request.serverName }/search/Controller/all", {
+			"async" : true,
+			"data" : {"arg" : $("#search").val()},
+			"method" : "post"
+		}).done(function(rst) {
+			$("#result").empty();
+			if(rst.result==false){
+				$("#result").append("<hr/><p style=\"color:red;\"><b>검색된 결과가 없습니다.</b></p><hr/>");
+			}else{
+				$.each(rst,function(i,item){
+					$("#result").append("<hr/><p style=\"color:blue;font-size:16;\"><b>" + item.TITLE + "</b></p><p>저자 : " + item.AUTHOR + "</p><p>발행인 : " + item.PUBLISHER + ", 발행일 : " + item.PUBLISH_PREDATE + "</p><p>ISBN : " + item.EA_ISBN + "</p>");
+				})
+			}
+		}).fail(function(request,status,error){
+			window.alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		});
+	})
+</script>
