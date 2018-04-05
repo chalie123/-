@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <h2 align="center"> 로그인실패</h2>
 <p align="center">아이디 혹은 패스워드 가 틀립니다 <br/>
-   재확인후 다시 로그인 바랍니다 실패 횟수 ${cnt }</p>
+   재확인후 다시 로그인 바랍니다 실패 횟수: ${cnt }</p>
 
 <br/>
 <br/>
