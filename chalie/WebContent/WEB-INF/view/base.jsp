@@ -73,69 +73,69 @@ footer {
 
 							data-toggle="dropdown" href="#">자료검색 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/search/all">통합검색</a></li>
-								<li><a href="/search/common">일반도서</a></li>
-								<li><a href="/search/nonbook">비도서</a></li>
-								<li><a href="/search/kid">아동도서</a></li>
-								<li><a href="/search/newcome">신착자료</a></li>
-								<li><a href="/search/recommend">추천도서</a></li>
-								<li><a href="/search/popular">인기도서</a></li>
+								<li><a href="/search/allView">통합검색</a></li>
+								<li><a href="/search/commonView">일반도서</a></li>
+								<li><a href="/search/nonbookView">비도서</a></li>
+								<li><a href="/search/kidView">아동도서</a></li>
+								<li><a href="/search/newcomeView">신착자료</a></li>
+								<li><a href="/search/recommendView">추천도서</a></li>
+								<li><a href="/search/popularView">인기도서</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">나의 서재 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/account/rental">대출/연장/예약조회</a></li>
-								<li><a href="/account/proposal">희망도서신청/조회</a></li>
-								<li><a href="/account/modify">개인정보수정/탈퇴</a></li>
+								<li><a href="/account/rentalView">대출/연장/예약조회</a></li>
+								<li><a href="/account/proposalView">희망도서신청/조회</a></li>
+								<li><a href="/account/modifyView">개인정보수정/탈퇴</a></li>
 								<li><a href="#">보류!menu2-4</a></li>
 								<li><a href="#">보류!menu2-5</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">전자도서관 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/elib/ebook">전자책</a></li>
-								<li><a href="/elib/education">사이버학습</a></li>
-								<li><a href="/elib/audiobook">오디오북</a></li>
+								<li><a href="/elib/ebookView">전자책</a></li>
+								<li><a href="/elib/educationView">사이버학습</a></li>
+								<li><a href="/elib/audiobookView">오디오북</a></li>
 								<li><a href="#">보류!전자인문관</a></li>
 								<li><a href="#">보류!menu3-5</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">참여마당 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/community/donation">도서기증</a></li>
-								<li><a href="/community/service">자원봉사신청</a></li>
-								<li><a href="/community/review">한줄감상</a></li>
-								<li><a href="/community/suggestion">도서관에바란다</a></li>
-								<li><a href="/community/group">소모임</a></li>
+								<li><a href="/community/donationView">도서기증</a></li>
+								<li><a href="/community/serviceView">자원봉사신청</a></li>
+								<li><a href="/contentIndex?link=t_community_review&board=0">한줄감상</a></li>
+								<li><a href="/contentIndex?link=t_community_suggestion&board=1">도서관에바란다</a></li>
+								<li><a href="/community/groupView">소모임</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">이용안내 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/guide/notification">공지사항</a></li>
-								<li><a href="/guide/FAQ">자주하는질문</a></li>
-								<li><a href="/guide/QNA">Q&A(참고봉사)</a></li>
-								<li><a href="/guide/rental">대출안내</a></li>
-								<li><a href="/guide/proposal">희망도서신청/조회</a></li>
-								<li><a href="/guide/constitution">도서관서비스헌장</a></li>
-								<li><a href="/guide/schedule">도서관일정</a></li>
+								<li><a href="/contentIndex?link=t_guide_notification&board=2">공지사항</a></li>
+								<li><a href="/contentIndex?link=t_guide_FAQ&board=3">자주하는질문</a></li>
+								<li><a href="/contentIndex?link=t_guide_QNA&board=4">Q&A(참고봉사)</a></li>
+								<li><a href="/guide/rentalView">대출안내</a></li>
+								<li><a href="/contentIndex?link=t_guide_proposal&board=5">희망도서신청/조회</a></li>
+								<li><a href="/guide/constitutionView">도서관서비스헌장</a></li>
+								<li><a href="/guide/scheduleView">도서관일정</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">도서관소개 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/info/welcome">인사말</a></li>
-								<li><a href="/info/history">연혁</a></li>
-								<li><a href="/info/organization">조직도</a></li>
-								<li><a href="/info/statistics">자료현황</a></li>
-								<li><a href="/info/map">찾아오시는길</a></li>
+								<li><a href="/info/welcomeView">인사말</a></li>
+								<li><a href="/info/historyView">연혁</a></li>
+								<li><a href="/info/organizationView">조직도</a></li>
+								<li><a href="/info/statisticsView">자료현황</a></li>
+								<li><a href="/info/mapView">찾아오시는길</a></li>
 							</ul></li>
 						<c:choose>
 							<c:when test="${rank==9 }">
 								<li class="dropdown"><a class="dropdown-toggle"
 								data-toggle="dropdown" href="#">관리자메뉴 <span class="caret"></span></a>
 								<ul class="dropdown-menu">
-									<li><a href="/manage/member">회원관리</a></li>
-									<li><a href="/manage/data">자료관리</a></li>
-									<li><a href="/manage/community">커뮤니티관리</a></li>
+									<li><a href="/manage/memberView">회원관리</a></li>
+									<li><a href="/manage/dataView">자료관리</a></li>
+									<li><a href="/manage/communityView">커뮤니티관리</a></li>
 								</ul></li>
 							</c:when>
 						</c:choose>

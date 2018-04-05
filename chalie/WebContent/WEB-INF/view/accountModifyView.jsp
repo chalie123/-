@@ -42,17 +42,15 @@
 				<td>핸드폰 번호</td>
 				<td>${phone }</td>
 			</tr>
+			<tr>
 			<td>등급</td>
 			<td>${rank }</td>
 			<tr />
-			<tr>
-			<td>카드 번호</td>
 			
-			</tr>
 
 		</tbody>
 	</table>
-	<form action="/acccount/delete">
+	<form action="/account/delete">
 	<div align="center"><button type="submit" name="delete">회원탈퇴</button></div>
 	</form>
 </div>

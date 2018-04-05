@@ -1,8 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    
+    
+    
 <h2 align="center"> 로그인실패</h2>
 <p align="center">아이디 혹은 패스워드 가 틀립니다 <br/>
-   재확인후 다시 로그인 바랍니다 실패 횟수: ${cnt }</p>
+   재확인후 다시 로그인 바랍니다 </p>
 
 <br/>
 <br/>
@@ -38,6 +48,8 @@
 						&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
 						<button type="submit" name="cnt">로그인</button> <button type="button"><a href="/account/createView/">회원가입</a></button>
 					</p>
+					<small>혹시 비밀번호를 잊으셨나요? </small><button type="button"><a href="/account/passfindView">비밀번호찾기</a></button>
+					
 				</form>
 			</div>
 		</div>

@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%session.setAttribute("id", "insub"); %>
+<%session.setAttribute("id", "김인섭"); %>
 </body>
 </html>
