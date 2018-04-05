@@ -6,18 +6,17 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <form action="/adminContentModify" method="post"
-	enctype="multipart/form-data">관리자가 게시판을 변경할수있게 해준다. 기존 이미지파일을 지우고 등록시킬 이미지 파일로 대체한다.
-	<input type="hidden" name="target" value="${target }">어떤 게시판인지 입력받을곳 
+	enctype="multipart/form-data">
+	<input type="hidden" name="fileName" value="${fileName}">
 	<p id="photo_preview"></p>
 	<br> <br> 사진 : 
 	<input type="file"  name="other" id="photo"><br> 
 	업로드된 파일<br />
-	<c:if test="${files !=null }">
-			<img src="${files}" width="200px" height="200px">
+			<p id="load_photo_preview"><img src="${files}" ></p>
 			<br />
+				<input type="hidden" name="fileName" value="${fileName }">			
 				<input type="hidden" name="deleteFile" value="${files}">
 			<br />
-	</c:if>
 	<button type="submit">확인</button>
 </form>
 <form action="/index">
@@ -41,6 +40,7 @@
 							var reader = new FileReader();
 							reader.readAsDataURL(files[i]);
 							reader.onload = function() {
+								$("#load_photo_preview").html("");
 								$("#photo_preview")
 										.append(
 												"<img src=\""+ this.result+"\" style=\"width:200px;height:200px; margin:5px;\"/>");

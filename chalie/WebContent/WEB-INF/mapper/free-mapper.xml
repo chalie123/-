@@ -5,20 +5,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="free">
 	<select id="selectAll" resultType="HashMap">
 		<!-- //메퍼에서 뽑아올때, 최신순으로 데이터가 나오게 수정 -->
-		select * from free_board
+		select * from free_board order by  firstmodifieddate DESC
 	</select>
 	<select id="selectSearch" resultType="HashMap">
 		select * from free_board where title like #{key} or user_id like #{key} or
-		tags like #{key}
+		tags like #{key} order by  firstmodifieddate DESC
 	</select>
 	<select id="selectText" resultType="HashMap">
-		select * from free_board where UUID = #{UUID}
+		select * from free_board where UUID = #{UUID} order by  firstmodifieddate DESC
 	</select>
 	<select id="selectBoard" resultType="HashMap">
-		select * from free_board where board = #{board}
+		select * from free_board where board = #{board} order by  firstmodifieddate DESC
 	</select>
 	<update id="updateViews">
-		update free_board set views =views+1 where UUID = #{UUID}
+		update free_board set views =views+1 where UUID = #{UUID} 
 	</update>
 	<insert id="registerContent">
 		insert into free_board values

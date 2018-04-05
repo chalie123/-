@@ -31,24 +31,45 @@
 			<button type="submit" value="delete" name="delete">삭제</button>
 		</form>
 	</c:if>
+	<br> <br>
+	<div>
+		<table border="0" width="850px" height="25" cellspacing="1"
+			cellpadding="1" bgcolor="#FFE8E8" >
+			<colgroup>
+				<col width="7%"/>
+				<col width="55%" />
+				<col width="22%"/>
+				<col width="6%"/>
+			</colgroup>
+			<tbody>
+				<tr bgcolor="#FFFFFF" >
+					<th scope="col" width="55px" >작성자</th>
+					<th scope="col" width="55px" >제목</th>
+					<th scope="col" width="55px">작성날짜</th>
+					<th scope="col" width="55px">조회수</th>
+				</tr>
 
-	<br /> <br /> 글쓴이 제목 날짜 조회 <br>
-	<c:forEach var="o" items="${list }" varStatus="vs">
-						${o.USER_ID } 가쓴 <a
-			href="/contentView?UUID=${o.UUID}&link=${link}&board=${board}">${o.TITLE }</a>
-						 날짜
-						 <c:choose>
-			<c:when test="${o.LASTMODIFIEDDATE !=null }">
+
+				<c:forEach var="o" items="${list }" varStatus="vs">
+					<tr bgcolor="#FFFFFF">
+						<td>${o.USER_ID }</td>
+						<td><a
+							href="/contentView?UUID=${o.UUID}&link=${link}&board=${board}">${o.TITLE }</a></td>
+						<td><c:choose>
+								<c:when test="${o.LASTMODIFIEDDATE !=null }">
 							${o.LASTMODIFIEDDATE } 
 						</c:when>
-			<c:otherwise>
-							:${o.FIRSTMODIFIEDDATE }
+								<c:otherwise>
+							${o.FIRSTMODIFIEDDATE }
 						</c:otherwise>
-		</c:choose>
-						조회수 ${o.VIEWS }
-						<br />
-	</c:forEach>
-	글 목록
+							</c:choose></td>
+						<td>${o.VIEWS }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		<br> <br>
+	</div>
 	<c:forEach var="i" begin="1" end="${maxIndex }" step="1">
 		<c:choose>
 			<c:when test="${i}==${index }">
@@ -59,22 +80,24 @@
 						</c:otherwise>
 		</c:choose>
 	</c:forEach>
-
-
 	<div>
-		<br /> 검색 글 제목,태그,글쓴이
-		<form action="/contentIndex">
-			<input type="hidden" value="${link}" name="link"> <input
-				type="hidden" value="${board}" name="board"> 검색 <input
-				type="search" name="key">
-			<button type="submit">확인</button>
-		</form>
-		<br /> 글쓰기 버튼
-		<form action="/contentWriteView">
-			<input type="hidden" value="${link}" name="link"> <input
-				type="hidden" value="${board}" name="board">
-			<button type="submit">글 쓰기</button>
-		</form>
+		<br />
+		<div>
+			<div>
+				<form action="/contentIndex">
+					<input type="hidden" value="${link}" name="link"> <input
+						type="hidden" value="${board}" name="board"> 검색 <input
+						type="search" name="key" placeholder="글태그 제목 아이디">
+					<button type="submit">확인</button>
+				</form>
+			</div>
+			<div>
+				<form action="/contentWriteView">
+					<input type="hidden" value="${link}" name="link"> <input
+						type="hidden" value="${board}" name="board">
+					<button type="submit">글 쓰기</button>
+				</form>
+			</div>
+		</div>
 	</div>
 </div>
-
