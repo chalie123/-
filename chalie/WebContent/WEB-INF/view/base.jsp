@@ -85,7 +85,7 @@ footer {
 							data-toggle="dropdown" href="#">나의 서재 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="/account/rentalView">대출/연장/예약조회</a></li>
-								<li><a href="/account/proposalView">희망도서신청/조회</a></li>
+								<li><a href="/contentIndex?link=t_account_proposal&board=5">희망도서신청/조회</a></li>
 								<li><a href="/account/modifyView">개인정보수정/탈퇴</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"

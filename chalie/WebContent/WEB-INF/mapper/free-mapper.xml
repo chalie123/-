@@ -11,6 +11,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from free_board where title like #{key} or user_id like #{key} or
 		tags like #{key} order by  firstmodifieddate DESC
 	</select>
+	<select id="selectIdSearch" resultType="HashMap">
+		select * from free_board where user_id = #{id} order by  firstmodifieddate DESC
+	</select>
 	<select id="selectText" resultType="HashMap">
 		select * from free_board where UUID = #{UUID} order by  firstmodifieddate DESC
 	</select>

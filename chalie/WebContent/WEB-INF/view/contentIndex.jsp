@@ -25,20 +25,11 @@
 	//로그인 확인
 		if (session.getAttribute("logon") != null) {
 			id = (String) session.getAttribute("logon");
-			auth=true;
+			if(session.getAttribute("rank").toString().equals("1")||session.getAttribute("rank").toString().equals("9"))
+				auth=true;
 		}
 	%>
 
-	<c:set var="id" value="<%=id%>"></c:set>
-	<c:if test="${text.USER_ID==id}">
-		<form action="/contentModify">
-			<input type="hidden" value="${text.UUID }" name="UUID"> <input
-				type="hidden" value="${link}" name="link"> <input
-				type="hidden" value="${board}" name="board">
-			<button type="submit" value="modify" name="modify">수정</button>
-			<button type="submit" value="delete" name="delete">삭제</button>
-		</form>
-	</c:if>
 	<br> <br>
 	<div>
 		<table border="0" width="850px" height="25" cellspacing="1"

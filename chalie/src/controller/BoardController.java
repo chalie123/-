@@ -38,12 +38,21 @@ public class BoardController {
 	public String indexViewController(@RequestParam(required = false, name = "key") String key,
 			@RequestParam(required = true, name = "board") String board,
 			@RequestParam(required = false, name = "index") Integer index, Model mav,
-			@RequestParam(required = true, name = "link") String link) {
+			@RequestParam(required = true, name = "link") String link,
+			HttpSession session) {
+		
 		Map param = new HashMap<String, String>();
 		if (key != null)
 			param.put("key", key);
 		if (index == null)
 			index = 0;
+		if(link.equals("t_account_proposal")) {
+			if(session.getAttribute("logon")==null) {
+				return "t_account_loginView";
+			}
+			if(session.getAttribute("logon")!=null)
+				param.put("id",session.getAttribute("logon") );
+		}
 		param.put("board", board);
 		List<Map> freeBoardList = freeBoardService.BoardService(param);
 		// 20개만 페이지에 넘김.
@@ -91,7 +100,7 @@ public class BoardController {
 		// 아이디 비로그인시 등록 x
 		if (session.getAttribute("logon") == null) {
 			// 로그인 안됐으니 로그인 창으로 보넨다.
-			return "";
+			return "t_account_loginView";
 		} else {
 			String[] array = UUID.randomUUID().toString().split("-");
 			String uuid = array[0] + "-" + array[1];
@@ -116,7 +125,7 @@ public class BoardController {
 			@RequestParam(required = true, name = "board") String board) {
 		if (session.getAttribute("logon") == null) {
 			// 로그인이 안됐으니 로그인 창으로 보넨다.
-			return "redirect:/index";
+			return "t_account_loginView";
 		} else {
 			mav.addAttribute("link", link);
 			mav.addAttribute("board", board);
@@ -132,7 +141,7 @@ public class BoardController {
 		String uuid;
 		if (session.getAttribute("logon") == null) {
 			// 로그인 안됐으니 로그인 창으로 보넨다.
-			return "redirect:/index";
+			return "t_account_loginView";
 		} else {
 			String[] array = UUID.randomUUID().toString().split("-");
 			uuid = array[0] + "-" + array[1];
@@ -258,5 +267,6 @@ public class BoardController {
 		mav.addAttribute("board", board);
 		return link + "ContentView";
 	}
-
+	
+	
 }

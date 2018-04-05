@@ -22,10 +22,10 @@ public class IndexController {
 	public String accountHandle(@PathVariable String path,HttpSession hs) {
 		String p="t_account_"+path;
 		if(hs.getAttribute("logon")==null) {
-			if(!path.equals("loginView")) {
-				path="createView";
+			if(path.equals("createView")) {
+				p="t_account_create1View";
 			}else {
-				path="loginView";
+				p="t_account_loginView";
 			}
 			
 		}

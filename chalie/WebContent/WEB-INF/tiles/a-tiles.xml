@@ -107,10 +107,38 @@
 				<put-attribute name="title" value="희망도서신청/조회" />
 				<put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
 				<put-attribute name="body"
-					value="/WEB-INF/view/accountProposalView.jsp" />
+					value="/WEB-INF/view/contentIndex.jsp" />
 			</definition>
 		</put-attribute>
 	</definition>
+	<definition name="t_account_proposalWriteView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="희망도서신청/조회" />
+				<put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/contentWrite.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_account_proposalModifyView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="희망도서신청/조회" />
+				<put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/contentModify.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	<definition name="t_account_proposalContentView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="희망도서신청/조회" />
+				<put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+				<put-attribute name="body" value="/WEB-INF/view/contentView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
+	
 	<definition name="t_account_modifyView" extends="t_base">
 		<put-attribute name="main">
 			<definition template="/WEB-INF/view/chasses.jsp">
@@ -152,12 +180,42 @@
       </put-attribute>
    </definition>
    
+  
    <definition name="t_account_loginfailView" extends="t_base">
       <put-attribute name="main">
          <definition template="/WEB-INF/view/chasses.jsp">
             <put-attribute name="title" value="로그인실패"/>
             <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
             <put-attribute name="body" value="/WEB-INF/view/accountLoginfailView.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+   
+   <definition name="t_account_deleteView" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="회원탈퇴"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountDeleteView.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+   
+   <definition name="t_account_passfindView" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="비밀번호찾기"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountPassfindView.jsp" />
+         </definition>
+      </put-attribute>
+   </definition>
+   <definition name="t_account_recoveryView" extends="t_base">
+      <put-attribute name="main">
+         <definition template="/WEB-INF/view/chasses.jsp">
+            <put-attribute name="title" value="비밀번호 재설정"/>
+            <put-attribute name="side" value="/WEB-INF/view/accountSide.jsp" />
+            <put-attribute name="body" value="/WEB-INF/view/accountRecoveryView.jsp" />
          </definition>
       </put-attribute>
    </definition>

@@ -38,6 +38,9 @@ public class FreeBoardService {
 			param.put("key",key);
 			return template.selectList("free.selectSearch", param);
 		} 
+		if(param.containsKey("id")) {
+			return template.selectList("free.selectIdSearch", param);
+		}
 		return template.selectList("free.selectBoard", param);
 	}
 	public boolean freeBoardUpdateService(Map<String, String> param) {
