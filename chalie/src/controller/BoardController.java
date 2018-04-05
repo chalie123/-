@@ -89,14 +89,14 @@ public class BoardController {
 			@RequestParam(required = true, name = "link") String link,
 			@RequestParam(required = true, name = "board") String board) {
 		// 아이디 비로그인시 등록 x
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("logon") == null) {
 			// 로그인 안됐으니 로그인 창으로 보넨다.
 			return "";
 		} else {
 			String[] array = UUID.randomUUID().toString().split("-");
 			String uuid = array[0] + "-" + array[1];
 			param.put("comments_UUID", uuid);
-			param.put("user_id", (String) session.getAttribute("id"));
+			param.put("user_id", (String) session.getAttribute("logon"));
 			commentService.commentRegisterService(param);
 		}
 		String contentUUID = param.get("UUID");
@@ -114,9 +114,9 @@ public class BoardController {
 	public String writeController(HttpSession session, Model mav,
 			@RequestParam(required = true, name = "link") String link,
 			@RequestParam(required = true, name = "board") String board) {
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("logon") == null) {
 			// 로그인이 안됐으니 로그인 창으로 보넨다.
-			return "";
+			return "redirect:/index";
 		} else {
 			mav.addAttribute("link", link);
 			mav.addAttribute("board", board);
@@ -130,15 +130,15 @@ public class BoardController {
 			@RequestParam(required = true, name = "link") String link,
 			@RequestParam(required = true, name = "board") String board) {
 		String uuid;
-		if (session.getAttribute("id") == null) {
+		if (session.getAttribute("logon") == null) {
 			// 로그인 안됐으니 로그인 창으로 보넨다.
-			return "";
+			return "redirect:/index";
 		} else {
 			String[] array = UUID.randomUUID().toString().split("-");
 			uuid = array[0] + "-" + array[1];
 			param.put("board", board);
 			param.put("UUID", uuid);
-			param.put("user_id", (String) session.getAttribute("id"));
+			param.put("user_id", (String) session.getAttribute("logon"));
 			freeBoardService.freeBoardRegisterService(param);
 		}
 		ServletContext ctx = hsr.getServletContext();

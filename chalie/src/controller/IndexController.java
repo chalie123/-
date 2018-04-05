@@ -1,5 +1,7 @@
 package controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,8 +19,16 @@ public class IndexController {
 		return p;
 	}
 	@RequestMapping("/account/{path}")
-	public String accountHandle(@PathVariable String path) {
+	public String accountHandle(@PathVariable String path,HttpSession hs) {
 		String p="t_account_"+path;
+		if(hs.getAttribute("logon")==null) {
+			if(!path.equals("loginView")) {
+				path="createView";
+			}else {
+				path="loginView";
+			}
+			
+		}
 		return p;
 	}
 	@RequestMapping("/elib/{path}")

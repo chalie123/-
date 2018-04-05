@@ -9,15 +9,23 @@
 	pageEncoding="UTF-8" trimDirectiveWhitespaces="true"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
+	
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <div align="center">
 
 	<%
 		String id = "";
-		//로그인 확인
-		if (session.getAttribute("id") != null) {
-			id = (String) session.getAttribute("id");
+		boolean auth=false;	
+	//로그인 확인
+		if (session.getAttribute("logon") != null) {
+			id = (String) session.getAttribute("logon");
+			auth=true;
 		}
 	%>
 
@@ -92,11 +100,14 @@
 				</form>
 			</div>
 			<div>
+				<c:set var="auth" value="<%=auth%>"></c:set>
+			<c:if test="${auth}">
 				<form action="/contentWriteView">
 					<input type="hidden" value="${link}" name="link"> <input
 						type="hidden" value="${board}" name="board">
 					<button type="submit">글 쓰기</button>
 				</form>
+				</c:if>
 			</div>
 		</div>
 	</div>

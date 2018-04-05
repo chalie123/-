@@ -87,8 +87,6 @@ footer {
 								<li><a href="/account/rentalView">대출/연장/예약조회</a></li>
 								<li><a href="/account/proposalView">희망도서신청/조회</a></li>
 								<li><a href="/account/modifyView">개인정보수정/탈퇴</a></li>
-								<li><a href="#">보류!menu2-4</a></li>
-								<li><a href="#">보류!menu2-5</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">전자도서관 <span class="caret"></span></a>
@@ -96,8 +94,6 @@ footer {
 								<li><a href="/elib/ebookView">전자책</a></li>
 								<li><a href="/elib/educationView">사이버학습</a></li>
 								<li><a href="/elib/audiobookView">오디오북</a></li>
-								<li><a href="#">보류!전자인문관</a></li>
-								<li><a href="#">보류!menu3-5</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">참여마당 <span class="caret"></span></a>
@@ -106,7 +102,6 @@ footer {
 								<li><a href="/community/serviceView">자원봉사신청</a></li>
 								<li><a href="/contentIndex?link=t_community_review&board=0">한줄감상</a></li>
 								<li><a href="/contentIndex?link=t_community_suggestion&board=1">도서관에바란다</a></li>
-								<li><a href="/community/groupView">소모임</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">이용안내 <span class="caret"></span></a>
