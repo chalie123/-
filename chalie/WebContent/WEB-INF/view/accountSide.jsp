@@ -11,5 +11,6 @@
 	<li><a href="/account/createView">회원가입</a></li>
 	</c:when>
 </c:choose>
+
 </ul>
 <br>
