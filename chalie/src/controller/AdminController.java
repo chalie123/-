@@ -1,3 +1,4 @@
+package controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 //뷰, 타일즈 연동
 @Controller
-public class adminController {
+public class AdminController {
 	@RequestMapping("/adminContentModifyView")
 	public String modifyContentViewController(@RequestParam Map<String, String> param, Model mav,
 			@RequestParam(required = true, name = "link") String link,
