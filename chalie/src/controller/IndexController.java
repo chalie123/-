@@ -9,7 +9,6 @@ public class IndexController {
 
    @RequestMapping({"/index","/"})
    public String indexHandle() {
-	   System.out.println("index");
       return "t_index";
    }
    @RequestMapping("/search/{path}")
