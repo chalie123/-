@@ -161,6 +161,7 @@ public class AccountController {
 				logons = (Set) request.getServletContext().getAttribute("logons");
 				logons.add(rst.get(0).get("NAME"));
 				request.getServletContext().setAttribute("logons", logons);
+				
 			}
 			session.setAttribute("logon", rst.get(0).get("NAME"));
 			session.setAttribute("email", AES256.decrypt((String) rst.get(0).get("EMAIL"), key));
