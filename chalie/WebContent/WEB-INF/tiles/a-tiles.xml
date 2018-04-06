@@ -355,6 +355,16 @@
 			</definition>
 		</put-attribute>
 	</definition>
+		<definition name="t_community_chatView" extends="t_base">
+		<put-attribute name="main">
+			<definition template="/WEB-INF/view/chasses.jsp">
+				<put-attribute name="title" value="대나무숲" />
+				<put-attribute name="side" value="/WEB-INF/view/communitySide.jsp" />
+				<put-attribute name="body"
+					value="/WEB-INF/view/communityChatView.jsp" />
+			</definition>
+		</put-attribute>
+	</definition>
 	<!-- 이용안내 -->
 	<definition name="t_guide_notificationView" extends="t_base">
 		<put-attribute name="main">

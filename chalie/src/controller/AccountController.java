@@ -87,7 +87,7 @@ public class AccountController {
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		String key = "1234567890123456";
 		if (param.get("email") != null)
-			param.put("email", AES256.encrypt("email", key));
+			param.put("email", AES256.encrypt(param.get("email"), key));
 		boolean rst = AccountService.overlapCheck(param);
 		if (rst) {
 			Map map = new HashMap();

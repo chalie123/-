@@ -20,21 +20,21 @@
 		</div>
 		<div class="form-group">
 			<label for="pwd">Password:</label> <input type="password"
-				class="form-control" name="pass" id="pass">
+				class="form-control" name="pass" id="pass" >
 		</div>
 		<div class="form-group">
 			<label for="pwd">NickName:</label> <input type="text"
-				class="form-control" id="nameVal" name="name">
+				class="form-control" id="nameVal" name="name"placeholder="필수입력">
 			<button type="button" id="nameOverlap">중복확인</button>
 			<span id="nameRst"></span>
 		</div>
 		<div class="form-group">
 			<label for="pwd">PhoneNumber:</label> <input type="text"
-				class="form-control" name="phone" id="phone">
+				class="form-control" name="phone" id="phone"placeholder="필수입력">
 		</div>
 		<div class="form-group">
 			<label for="pwd">CardNumber:</label> <input type="text"
-				class="form-control" name="card">
+				class="form-control" name="card" >
 		</div>
 		<div class="form-group">
 			<label for="pwd">Card:</label> <input type="text"
@@ -43,7 +43,7 @@
 		</div>
 		<div class="form-group">
 			<label for="pwd">Address:</label> <input type="text"
-				class="form-control" name="address" id="address">
+				class="form-control" name="address" id="address" placeholder="필수입력">
 		</div>
 		<div class="form-group">
 			<label for="pwd">Card:</label> <input type="text"
@@ -60,32 +60,22 @@
 		</div>
 
 		<div align="center">
-			<button type="submit" id="create" disabled onclick="check()">확인</button>
+			<button type="submit" id="create" onsubmit=" return check()" disabled>확인</button>
 		</div>
 
 	</form>
 	<script>
-	//emailVal,pass,nameVal,phone,address
-	//ppt만들기
-	//메인페이지 링크 걸기
-	//회원가입 폼 막기
-	function check(){
-		var email =$("#emailVal").val();
-		var pass =$("#pass").val();
-		var nameVal =$("#nameVal").val();
-		var phone =$("#phone").val();
-		var address =$("#address").val();
-		console.log(email);
-		console.log(pass);
-		console.log(nameVal);
-		console.log(phone);
-		console.log(address);
-		window.setTimeout(function() {
-			
-		}, 10000)
-	}
 		var emailCheck = false;
 		var nameCheck = false;
+		var passCheck = false;
+		var phoneCheck = false;
+		var addressCheck = false;
+		$("input").keydown(function(){
+			passCheck=$("#pass").val().length>=8;
+			phoneCheck=$("#phone").val().length>=11;
+			addressCheck=$("#address").val().length>=1;
+		})
+		
 		$("#emailOverlap").on("click", function() {
 			$.ajax("/account/overlapCheck", {
 				"async" : true,
@@ -94,6 +84,7 @@
 				},
 				"method" : "post"
 			}).done(function(rst) {
+				console.log($("#pass").val().length);
 				if (rst.overlapCheck) {
 					$("#emailRst").html("사용 가능한 이메일 주소입니다.");
 					$("#emailRst").css("color", "green");
@@ -103,7 +94,7 @@
 					$("#emailRst").css("color", "red");
 					emailCheck = false;
 				}
-				if ((emailCheck == true) && (nameCheck == true)) {
+				if ((emailCheck == true) && (nameCheck == true)&& (phoneCheck == true)&& (passCheck == true)&& (addressCheck == true)) {
 					$("#create").removeAttr("disabled");
 				} else {
 					$("#create").attr("disabled", "disabled");
@@ -128,14 +119,35 @@
 					$("#nameRst").css("color", "red");
 					nameCheck = false;
 				}
-				if ((emailCheck == true) && (nameCheck == true)) {
+				if ((emailCheck == true) && (nameCheck == true)&& (phoneCheck == true)&& (passCheck == true)&& (addressCheck == true)) {
 					$("#create").removeAttr("disabled");
 				} else {
 					$("#create").attr("disabled", "disabled");
 				}
 			})
 		})
-	</script>
+		function check(){
+			if(!passCheck){
+				window.alert("비밀번호를 8자 이상 입력해주시기 바랍니다.");
+				return false;
+			}
+			if(!phoneCheck){
+				window.alert("올바른 번호를 입력해주시기 바랍니다.");
+				return false;
+			}
+			if(!addressCheck){
+				window.alert("올바른 주소를 입력해주시기 바랍니다.");
+				return false;
+			};
+			return  true;
+		}
+
+		
+		
+		
+		
+		
+		</script>
 
 
 

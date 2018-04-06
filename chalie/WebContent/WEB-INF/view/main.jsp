@@ -78,35 +78,35 @@
 			<ul class="boardRecent">
 				<li class="bullet32"><span>[18.04.04]</span> <img
 					src="/image/mi_new.gif" alt="새글" /> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=413"
+					href="/contentView?UUID=5bb967af-b1cb&link=t_guide_notification&board=2"
 					class="ajaxAnchor">서천도서관 3월의 문제적이용자 발표</a></li>
 				<li class="bullet32"><span>[18.04.04]</span> <img
 					src="/image/mi_new.gif" alt="새글" /> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=412"
+					href="/contentView?UUID=b3eeb838-5c45&link=t_guide_notification&board=2"
 					class="ajaxAnchor">제54회 도서관주간 행사 안내</a></li>
 				<li class="bullet32"><span>[18.04.01]</span> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=411"
+					href="/contentView?UUID=342180fe-9c8e&link=t_guide_notification&board=2"
 					class="ajaxAnchor">서천도서관 소식지 4월호</a></li>
 				<li class="bullet32"><span>[18.03.29]</span> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=409"
+					href="/contentView?UUID=1f9c7a92-218f&link=t_guide_notification&board=2"
 					class="ajaxAnchor">2018년 4월 휴관일 안내</a></li>
 				<li class="bullet32"><span>[18.03.22]</span> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=408"
+					href="/contentView?UUID=98417a31-3939&link=t_guide_notification&board=2"
 					class="ajaxAnchor">2018년 1차 도서구매 소액수의 전자견적 공고</a></li>
 				<li class="bullet32"><span>[18.03.21]</span> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=407"
+					href="/contentView?UUID=42fdb939-4eea&link=t_guide_notification&board=2"
 					class="ajaxAnchor">공감학교 강의 제안서 첨부</a></li>
 				<li class="bullet32"><span>[18.03.20]</span> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=406"
+					href="/contentView?UUID=ce823231-9540&link=t_guide_notification&board=2"
 					class="ajaxAnchor">3월 문화가 있는 날 행사 안내</a></li>
 				<li class="bullet32"><span>[18.03.15]</span> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=405"
+					href="/contentView?UUID=f18f43fc-7fd6&link=t_guide_notification&board=2"
 					class="ajaxAnchor">서천도서관 2월의 문제적 이용자 발표</a></li>
 				<li class="bullet32"><span>[18.03.09]</span> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=404"
+					href="/contentIndex?link=t_guide_notification&board=2"
 					class="ajaxAnchor">2018년 2월 희망도서 비치안내</a></li>
 				<li class="bullet32"><span>[18.03.05]</span> <a
-					href="/main/board/read.php?tblname=20110609115109&amp;id=403"
+					href="http://192.168.10.77/contentView?UUID=ea706fce-84ef&link=t_guide_notification&board=2"
 					class="ajaxAnchor">'책 읽어주세요' 참여 어린이 모집</a></li>
 			</ul>
 			<p class="more">
@@ -121,43 +121,8 @@
 					src="/image/mi_mc_board_3_off.gif" width="69"
 					height="22" alt="행정자료실" /></a>
 			</h2>
-			<ul class="boardRecent">
-				<li class="bullet32"><span>[18.04.02]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=96"
-					class="ajaxAnchor">2018년 3월 업무추진비 집행내역 및 법인카드 사용내역</a></li>
-				<li class="bullet32"><span>[18.03.05]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=95"
-					class="ajaxAnchor">2018년 2월 업무추진비 집행내역 및 법인카드 사용내역</a></li>
-				<li class="bullet32"><span>[18.03.05]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=94"
-					class="ajaxAnchor">2018년 3월 자율적 내부점검표</a></li>
-				<li class="bullet32"><span>[18.02.23]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=93"
-					class="ajaxAnchor">2018년 2월 자율적 내부점검표</a></li>
-				<li class="bullet32"><span>[18.02.01]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=92"
-					class="ajaxAnchor">2018년 1월 업무추진비 집행내역 및 법인카드 사용내역</a></li>
-				<li class="bullet32"><span>[18.01.29]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=91"
-					class="ajaxAnchor">2018년 1월 자율적 내부점검표</a></li>
-				<li class="bullet32"><span>[18.01.02]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=90"
-					class="ajaxAnchor">2017년 12월 업무추진비 집행내역 및 법인카드 사용내역</a></li>
-				<li class="bullet32"><span>[18.01.02]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=89"
-					class="ajaxAnchor">2017년 12월 자율적 내부점검표</a></li>
-				<li class="bullet32"><span>[17.12.06]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=88"
-					class="ajaxAnchor">2017년 11월 업무추진비 집행내역 및 법인카드 사용내역</a></li>
-				<li class="bullet32"><span>[17.11.25]</span> <a
-					href="/main/board/read.php?tblname=20160314095520&amp;id=87"
-					class="ajaxAnchor">2017년 11월 자율적 내부점검표</a></li>
-			</ul>
-			<p class="more">
-				<a href="board/list.php?tblname=20160314095520" title="행정자료실 더보기"><img
-					src="skin/default/images/lmi_mc_more_1.gif" width="30" height="6"
-					alt="더보기" /></a>
-			</p>
+		
+			
 		</li>
 	</ul>
 	<!-- /board -->

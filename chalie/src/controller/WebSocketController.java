@@ -2,6 +2,7 @@ package controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.annotation.PostConstruct;
 
@@ -22,7 +23,12 @@ public class WebSocketController extends TextWebSocketHandler{
 		wsSessions=new HashMap<>();
 	} 
 	public void afterConnectionEstablished(WebSocketSession wsSession) throws Exception {
-		String name=(String) wsSession.getAttributes().get("logon");
+		String name="";
+		if(wsSession.getAttributes().get("logon")==null) {
+			name="익명의 사용자 "+UUID.randomUUID().toString().substring(0, 6);
+		}else {
+			name=(String) wsSession.getAttributes().get("logon");
+		}
 		for(WebSocketSession ws : wsSessions.keySet()) {
 			Map map=new HashMap();
 			map.put("name", name);
@@ -48,7 +54,6 @@ public class WebSocketController extends TextWebSocketHandler{
 	}
 	@Override
 	public void afterConnectionClosed(WebSocketSession wsSession, CloseStatus status) throws Exception {
-		System.out.println("WS disconnected.");
 		wsSessions.remove(wsSession);
 		for(WebSocketSession ws : wsSessions.keySet()) {
 			Map map=new HashMap();

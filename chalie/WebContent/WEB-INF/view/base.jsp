@@ -89,19 +89,13 @@ footer {
 								<li><a href="/account/modifyView">개인정보수정/탈퇴</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
-							data-toggle="dropdown" href="#">전자도서관 <span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<li><a href="/elib/ebookView">전자책</a></li>
-								<li><a href="/elib/educationView">사이버학습</a></li>
-								<li><a href="/elib/audiobookView">오디오북</a></li>
-							</ul></li>
-						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">참여마당 <span class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a href="/community/donationView">도서기증</a></li>
 								<li><a href="/community/serviceView">자원봉사신청</a></li>
 								<li><a href="/contentIndex?link=t_community_review&board=0">한줄감상</a></li>
 								<li><a href="/contentIndex?link=t_community_suggestion&board=1">도서관에바란다</a></li>
+								<li><a href="/community/chatView">대나무숲</a></li>
 							</ul></li>
 						<li class="dropdown"><a class="dropdown-toggle"
 							data-toggle="dropdown" href="#">이용안내 <span class="caret"></span></a>
