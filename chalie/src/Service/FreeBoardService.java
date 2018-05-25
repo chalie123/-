@@ -24,9 +24,24 @@ public class FreeBoardService {
 			//글 읽으려고 할 시
 			freeBoardUpdateService(param);
 			return template.selectList("free.selectText", param);
-		} else {
+		} else if(param.containsKey("board")) {
+			return template.selectList("free.selectBoard", param);
+		}else {
+			//삭제할 부분
 			return template.selectList("free.selectAll");
 		}
+	}
+	public List<Map> BoardService(Map<String, String> param) {
+		if (param.containsKey("key")) {
+			String key =param.get("key")+"%";
+			param.remove("key");
+			param.put("key",key);
+			return template.selectList("free.selectSearch", param);
+		} 
+		if(param.containsKey("id")) {
+			return template.selectList("free.selectIdSearch", param);
+		}
+		return template.selectList("free.selectBoard", param);
 	}
 	public boolean freeBoardUpdateService(Map<String, String> param) {
 		return template.update("free.updateViews", param)==1;

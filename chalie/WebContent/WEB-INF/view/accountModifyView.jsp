@@ -15,44 +15,59 @@
 
 	<table class="table table-bordered">
 		<colgroup>
-
 			<col style="width: 20%;">
-
-			<col style="width: 70%;">
-
+			<col style="width: 40%;">
+			<col style="width: 40%;">
 		</colgroup>
-		<thead>
-			<tr>
-				<th>이름</th>
-				<th>${logon }</th>
-
-			</tr>
-		</thead>
 		<tbody>
+			<tr>
+				<td>이름</td>
+				<td>${logon }</td>
+				<td>
+					<form action="/account/modify" style="height:8px;">
+						<input type="password" placeholder="변경할 비밀번호" name="pass">
+						<button>변경</button>
+					</form>
+				</td>
+			</tr>
 			<tr>
 				<td>이 메일</td>
 				<td>${email }</td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>주소</td>
 
 				<td>${address }</td>
+				<td>
+					<form action="/account/modify" style="height:8px;">
+						<input type="text" placeholder="변경할 주소" name="address">
+						<button>변경</button>
+					</form>
+				</td>
 			</tr>
 			<tr>
 				<td>핸드폰 번호</td>
 				<td>${phone }</td>
+				<td>
+					<form action="/account/modify" style="height:8px;">
+						<input type="text" placeholder="변경할 번호" name="phone">
+						<button>변경</button>
+					</form>
+				</td>
 			</tr>
-			<td>등급</td>
-			<td>${rank }</td>
-			<tr />
 			<tr>
-			<td>카드 번호</td>
-			
-			</tr>
+				<td>등급</td>
+				<td>${rank }</td>
+				<td>${rank }</td>
+			<tr />
 
 		</tbody>
 	</table>
-	<form action="/acccount/delete">
-	<div align="center"><button type="submit" name="delete">회원탈퇴</button></div>
-	</form>
+	<div align="center">
+		<form action="/account/delete">
+			<button type="submit">회원탈퇴</button>
+			<br /> <br /> <br />
+		</form>
+	</div>
 </div>

@@ -1,27 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<html>
-<p>꿈이열리는창</p>
-<h2>찰리 도서관에 오신걸 환영합니다.</h2>
-
-<style>
-
-body{
-
-
-	
-  background-image:url('/image/q2.jpg');
-  background-repeat: no-repeat;
-	background-size: 60% 60%;
-	background-position: center center;
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<br>
+<br>
+<br>
+<%
+	boolean auth = false;
+if(session.getAttribute("rank")!=null){
+	if ( session.getAttribute("rank").toString().equals("9")) {
+		auth = true;
+	}
 }
-
-
-
-</style>
-</html>
+%>
+<c:if test="<%=auth %>">
+	<form action="/adminContentModifyView">
+		<input type="hidden" value="/image/welcome.png" name="file">
+		<input type="hidden" value="welcome.png" name="fileName">
+		<button type="submit">수정</button>
+	</form>
+</c:if>
+<img src="/image/welcome.png">
+<br>
+<br>
+<br>

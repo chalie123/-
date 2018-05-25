@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="comment">
 	<select id="selectComments" resultType="HashMap">
 		select * from
-		FREE_BOARD_COMMENTS where UUID = #{UUID}
+		FREE_BOARD_COMMENTS where UUID = #{UUID} order by  firstmodifieddate DESC
 	</select>
 	<insert id="registerComments">
 		insert into FREE_BOARD_COMMENTS values

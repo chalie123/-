@@ -4,6 +4,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lib_account">
 
+	<select id="query" resultType="hashmap">
+		select * from lib_account
+		<where>
+			<if test="serial!=null">
+				serial=#{serial}
+			</if>
+			<if test="email!=null">
+				email=#{email}
+			</if>
+			<if test="name!=null">
+				name=#{name}
+			</if>
+		</where>
+	</select>
 	<insert id="create">
 		insert into lib_account
 		values(#{email},#{pass},#{name},sysdate,#{phone},#{address},#{interest},#{card},#{carddate},#{cardname},#{cvc},#{serial},0)
@@ -12,7 +26,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from lib_account where email=#{email} and pass=#{pass}
 	</select>
 	<update id="modify">
-		update lib_account set pass=#{pass}
+		update lib_account set name=#{name}
+		<if test="pass != null">
+		 	, pass=#{pass}
+		</if>
 		<if test="phone != null">
 			, phone=#{phone}
 		</if>
@@ -28,10 +45,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where name=#{name}
 	</update>
 	<update id="delete">
-		update lib_account set email=0, pass=0, name=#{rename}, phone=0, address=0, interest=0, card=0, carddate=0, cardname=0, cvc=0 where name=#{name}
+		update lib_account set email=#{reemail}, pass=0, name=#{rename}, phone=0, address=0, interest=0, card=0, carddate=0, cardname=0, cvc=0 where name=#{name}
 	</update>
 	<update id="verify">
-		update lib_account set verify_email=1 where email=#{email}
+		update lib_account set verify_email=1 where serial=#{serial}
 	</update>
 	<select id="overlapCheck" resultType="hashmap">
 		select * from lib_account

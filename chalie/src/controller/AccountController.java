@@ -39,25 +39,55 @@ public class AccountController {
 	AccountService AccountService;
 	@Autowired
 	MailService MailService;
-	
-	@RequestMapping("/verify/{code}")
-	public String verifyHandle(@PathVariable String code) {
-		boolean rst = AccountService.verify(code);
-		if (rst) {
-			return "index";
+
+	@RequestMapping("/reset")
+	public String resetMailSender(@RequestParam String email)
+			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
+		String key = "1234567890123456";
+		Map map = new HashMap();
+		map.put("email", AES256.encrypt(email, key));
+		Map rst = AccountService.query(map);
+		MailService.sendPasswordRecoveryMail(email, (String) rst.get("SERIAL"));
+		return "redirect:/account/loginView";
+	}
+
+	@RequestMapping("/recovery/{serial}")
+	public String recoveryHandle(HttpSession session, @PathVariable String serial,
+			@RequestParam(required = false, name = "pass") String pass) {
+		if (pass == null) {
+			session.setAttribute("serial", serial);
+			return "redirect:/account/recoveryView";
 		} else {
-			return "index";
+			Map map = new HashMap();
+			map.put("serial", serial);
+			Map rst = AccountService.query(map);
+			map.clear();
+			map.put("name", rst.get("NAME"));
+			map.put("pass", SHA256.encrypt(pass));
+			AccountService.modify(map);
+			session.removeAttribute("serial");
+			return "redirect:/account/loginView";
+		}
+	}
+
+	@RequestMapping("/verify/{serial}")
+	public String verifyHandle(@PathVariable String serial) {
+		boolean rst = AccountService.verify(serial);
+		if (rst) {
+			return "redirect:/index";
+		} else {
+			return "redirect:/index";
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(path = "/overlapCheck", produces = "application/json;charset=UTF-8")
 	@ResponseBody
-	public String OverlapCheckHandle(@RequestParam Map<String, String> param)
+	public String overlapCheckHandle(@RequestParam Map<String, String> param)
 			throws NoSuchAlgorithmException, UnsupportedEncodingException, GeneralSecurityException {
 		String key = "1234567890123456";
 		if (param.get("email") != null)
-			param.put("email", AES256.encrypt("email", key));
+			param.put("email", AES256.encrypt(param.get("email"), key));
 		boolean rst = AccountService.overlapCheck(param);
 		if (rst) {
 			Map map = new HashMap();
@@ -77,10 +107,11 @@ public class AccountController {
 		// String key=(String) request.getServletContext().getAttribute("key");
 		// ��ȣȭ Ű�� 16�ڸ� ���� ���� String
 		String key = "1234567890123456";
-		String email=param.get("email");
-		String phone=param.get("phone");
-		String address=param.get("address");
-		param.put("serial", UUID.randomUUID().toString());
+		String email = param.get("email");
+		String phone = param.get("phone");
+		String address = param.get("address");
+		String serial = UUID.randomUUID().toString();
+		param.put("serial", serial);
 		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
 		param.put("phone", AES256.encrypt(param.get("phone"), key));
@@ -96,10 +127,10 @@ public class AccountController {
 		String rst = AccountService.create(param);
 		if (request.getServletContext().getAttribute("logons") == null) {
 			Set logons = new HashSet();
-			request.getServletContext().setAttribute("logons", logons.add(rst));
+			logons.add(rst);
+			request.getServletContext().setAttribute("logons", logons);
 		} else {
-			Set logons = new HashSet();
-			logons = (Set) request.getServletContext().getAttribute("logons");
+			Set logons = (Set) request.getServletContext().getAttribute("logons");
 			logons.add(rst);
 			request.getServletContext().setAttribute("logons", logons);
 		}
@@ -108,7 +139,8 @@ public class AccountController {
 		session.setAttribute("phone", phone);
 		session.setAttribute("address", address);
 		session.setAttribute("rank", "0");
-		MailService.sendVerifyMail(email, param.get("email"));
+
+		MailService.sendVerifyMail(email, serial);
 		if (rst.length() != 0) {
 			return "redirect:/index";
 		} else {
@@ -122,22 +154,29 @@ public class AccountController {
 		// String key=(String) request.getServletContext().getAttribute("key");
 		// ��ȣȭ Ű�� 16�ڸ� ���� ���� String
 		String key = "1234567890123456";
-		param.put("pass", SHA256.encrypt(param.get("pass")));
-		if (param.get("phone") != null)
+		if (param.get("pass") != null) {
+			param.put("pass", SHA256.encrypt(param.get("pass")));
+		}
+		if (param.get("phone") != null) {
+			session.setAttribute("phone", param.get("phone"));
 			param.put("phone", AES256.encrypt(param.get("phone"), key));
-		if (param.get("address") != null)
+		}
+		if (param.get("address") != null) {
+			session.setAttribute("address", param.get("address"));
 			param.put("address", AES256.encrypt(param.get("address"), key));
+		}
 		if (param.get("card") != null) {
 			param.put("card", AES256.encrypt(param.get("card"), key));
 			param.put("cardname", AES256.encrypt(param.get("cardname"), key));
 			param.put("carddate", AES256.encrypt(param.get("carddate"), key));
 			param.put("cvc", AES256.encrypt(param.get("cvc"), key));
 		}
-		String rst = AccountService.modify(session, param);
+		param.put("name", (String) session.getAttribute("logon"));
+		String rst = AccountService.modify(param);
 		if (rst.length() != 0) {
-			return "/index";
+			return "redirect:/account/modifyView";
 		} else {
-			return "/index";
+			return "redirect:/account/modifyView";
 		}
 	}
 
@@ -148,6 +187,7 @@ public class AccountController {
 		// String key=(String) request.getServletContext().getAttribute("key");
 		// ��ȣȭ Ű�� 16�ڸ� ���� ���� String
 		String key = "1234567890123456";
+		param.put("emailRaw", param.get("email"));
 		param.put("email", AES256.encrypt(param.get("email"), key));
 		param.put("pass", SHA256.encrypt(param.get("pass")));
 		List<Map> rst = AccountService.login(param);
@@ -168,8 +208,9 @@ public class AccountController {
 			session.setAttribute("address", AES256.decrypt((String) rst.get(0).get("ADDRESS"), key));
 			session.setAttribute("rank", rst.get(0).get("VERIFY_EMAIL"));
 			return "redirect:/index";
+
 		} else {
-			return "redirect:/index";
+			return "redirect:/account/loginfailView";
 		}
 	}
 
@@ -178,14 +219,10 @@ public class AccountController {
 	public String logoutHandle(HttpServletRequest request, HttpSession session) {
 		try {
 			Set logons = (Set) request.getServletContext().getAttribute("logons");
-			logons.remove(session.getAttribute("logon"));
+			logons.remove((String) session.getAttribute("logon"));
 			request.getServletContext().setAttribute("logons", logons);
 			AccountService.logout((String) session.getAttribute("logon"));
-			session.removeAttribute("logon");
-			session.removeAttribute("email");
-			session.removeAttribute("phone");
-			session.removeAttribute("address");
-			session.removeAttribute("rank");
+			session.invalidate();
 			return "redirect:/index";
 		} catch (NullPointerException e) {
 			e.printStackTrace();
@@ -200,6 +237,6 @@ public class AccountController {
 		name.put("name", session.getAttribute("logon"));
 		AccountService.delete(name);
 
-		return "/index";
+		return "redirect:/account/logout";
 	}
 }
